@@ -1,0 +1,50 @@
+<?php
+    session_start();
+    include 'db.php';
+    if (!$conn) {
+        die("<script>alert('Gagal tersambung dengan database.')</script>");
+    }
+?>
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>ATNOS</title>
+<link rel="stylesheet" href="tabel.css">
+</head>
+ <div class="text_box">
+            <p></p>
+            <center><h1>Airport Baggage Check Service</h1></center>
+            <p></p>
+            <center><p id="headtext" >Daftar Penumpang Koper Tidak Lolos X-RAY</p></center>
+<body>
+<div class="filter">
+</div>
+<table >
+<tr>
+            <th width="60px">No</th>
+            <th>Nomor Penerbangan</th>
+            <th>Nama</th>
+            <th>Status</th>
+    </tr>
+            <tbody>
+                         <!-- Menampilkan Data yang ada di Database -->
+                            <?php
+                            $no = 1;
+                            $tampil = mysqli_query($conn, "SELECT * FROM `tb_suspek` WHERE `status` like 'Aktif';
+                            ");
+                                    while($data = mysqli_fetch_array($tampil)) {
+                            ?>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $data['nomor_penerbangan'] ?></td>
+                                <td><?= $data['nama_penumpang'] ?></td>
+                                <td><?= $data['status'] ?></td>
+                                <?php } ?>
+            <tr>
+            <!---else--->
+            </tr>
+            </tbody>
+</table>
+</body>
+</html>
