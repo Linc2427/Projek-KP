@@ -31,7 +31,7 @@
                          <!-- Menampilkan Data yang ada di Database -->
                             <?php
                             $no = 1;
-                            $tampil = mysqli_query($conn, "SELECT * FROM `tb_suspek` WHERE `status` like 'Aktif';
+                            $tampil = mysqli_query($conn, "SELECT * FROM `tb_suspek` WHERE `status` like 'Aktif' ORDER BY `id_suspek`;
                             ");
                                     while($data = mysqli_fetch_array($tampil)) {
                             ?>
