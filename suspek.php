@@ -131,7 +131,7 @@
                                 <td class="text-center"><?= $data['tanggal']?></td>
                                 <td class="text-center">
                                 <!-- <button class="btn btn-primary bi bi-save" name="bsimpan" type="submit"></button> -->
-                                <a href="edit-data.php?id=<?php echo $data['id_suspek'] ?>"><button class="btn btn-warning bi bi-pencil-square" name="bedit" type="submit"></button></a>
+                                <a href="edit-data-suspek.php?id=<?php echo $data['id_suspek'] ?>"><button class="btn btn-warning bi bi-pencil-square" name="bedit" type="submit"></button></a>
                                 <a href="hapus.php?idp=<?php echo $data['id_suspek'] ?>" onclick="return confirm('Yakin ingin menghapus ?')"><button class="btn btn-danger bi bi-trash" name="bedit" type="submit"></button></a>
                                 </td>
                             </tr>

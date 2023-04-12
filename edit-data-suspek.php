@@ -5,7 +5,7 @@
             echo '<script>window.location="login.php"</script>';
         }
     // Menanpilkan data dari tabel tb_penumpang
-        $barang = mysqli_query($conn, "SELECT * FROM tb_suspek WHERE id_barang = '".$_GET['id']."' ");
+        $barang = mysqli_query($conn, "SELECT * FROM tb_suspek WHERE id_suspek = '".$_GET['id']."' ");
         if(mysqli_num_rows($barang) == 0){
             echo '<script>window.location="dashboard.php"</script>';
         }
@@ -42,9 +42,9 @@
                         <!-- Awal form -->
                         <form method="post">
                             <div class="mb-2">
-                                <label class="form-label">Nama Penerbangan</label>
+                                <label class="form-label">Nomor Penerbangan</label>
                                 <!-- <input type="text" name="tkode" class="form-control" placeholder="Masukkan Nama Penerbangan"> -->
-                                <input type="text" name="nama" class="form-control" placeholder="Masukkan Nomor Penerbangan" value="<?php echo $b->nama_penerbangan ?>" required>
+                                <input type="text" name="nama" class="form-control" placeholder="Masukkan Nomor Penerbangan" value="<?php echo $b->nomor_penerbangan ?>" required>
                             </div>
                             
                             <div class="mb-2">
@@ -52,6 +52,47 @@
                                 <!-- <input type="text" name="tnamap" class="form-control" placeholder="Masukkan Nama Penumpang"> -->
                                 <input type="text" name="tnamap" class="form-control" placeholder="Masukkan Nama Penumpang" value="<?php echo $b->nama_penumpang ?>" required>
                             </div>
+                            <div class="mb-2">
+                                <label class="form-label">Nama Barang</label>
+                                <!-- <input type="text" name="tnamab" class="form-control" placeholder="Masukkan Nama Barang"> -->
+                                <input type="text" name="tnamab" class="form-control" placeholder="Masukkan Nama Barang" value="<?php echo $b->nama_barang ?>" required>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Kategori Barang</label>
+                                <select class="form-select" name="tkategoribarang">
+                                <option>--Pilih--</option>
+                                    <?php
+                                        $kategori = mysqli_query($conn, "SELECT * FROM tb_kategori ORDER BY id_kategori DESC"); 
+                                            while($r = mysqli_fetch_array($kategori)){
+                                    ?> 
+                                    <option value="<?php echo $r['kategori_barang'] ?>"><?php echo $r['kategori_barang'] ?></option>
+                                <?php } ?>
+                                </select>
+                            <div class="row">
+                            <div class="col">
+                                <div class="mb-2">
+                                <label class="form-label">Jumlah</label>
+                                <input type="number" name="tjumlah" class="form-control" placeholder="Masukkan Jumlah Barang">
+                                </div>
+                            </div>    
+                            <div class="col">
+                            <div class="mb-2">
+                                <label class="form-label">Satuan</label>
+                                <select class="form-select" name="tsatuan">
+                                    <option>--Pilih--</option>
+                                    <option value="Unit">Unit</option>
+                                    <option value="Kotak">Kotak</option>
+                                    <option value="Pcs">Pcs</option>
+                                    <option value="Box">Box</option>
+                                </select>
+                            </div>    
+                            </div>
+                            <div class="col">
+                                <div class="mb-2">
+                                <label class="form-label">Tanggal</label>
+                                <input type="date" name="tTanggal" class="form-control" placeholder="Masukkan Jumlah Barang">
+                                </div>
+                            </div>   
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select class="form-select" name="tstatus">
@@ -76,7 +117,8 @@
 					if(isset($_POST['bsimpan'])){
 
 						// data inputan dari form
-						$nama_penerbangan 	= $_POST['nama'];
+                        $id_suspek = $_POST['id'];
+						$nomor_penerbangan 	= $_POST['nama'];
 						$nama_penumpang 	= $_POST['tnamap'];
 						$nama_barang 		= $_POST['tnamab'];
 						$kategori_barang 	= $_POST['tkategoribarang'];
@@ -84,8 +126,8 @@
                         $status 	        = $_POST['tstatus'];
                         $satuan 	 	    = $_POST['tsatuan'];
 						$tanggal 	 	    = $_POST['tTanggal'];
-                        $update = mysqli_query($conn, "INSERT INTO tb_suspek SET 
-												nama_penerbangan = '".$nama_penerbangan."',
+                        $update = mysqli_query($conn, "UPDATE tb_suspek SET 
+												nomor_penerbangan = '".$nomor_penerbangan."',
 												nama_penumpang = '".$nama_penumpang."',
 												nama_barang = '".$nama_barang."',
 												kategori_barang = '".$kategori_barang."',
@@ -93,10 +135,10 @@
                                                 status = '".$status."',
                                                 satuan = '".$satuan."',
 												tanggal = '".$tanggal."'
-												WHERE id_barang = '".$b->id_barang."'	");
+												WHERE id_suspek = '".$b->id_suspek."'");
 						if($update){
 							echo '<script>alert("Ubah data berhasil")</script>';
-							echo '<script>window.location="dashboard.php"</script>';
+							echo '<script>window.location="suspek.php"</script>';
 						}else{
 							echo 'gagal '.mysqli_error($conn);
 						}
