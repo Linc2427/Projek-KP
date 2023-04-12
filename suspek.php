@@ -40,23 +40,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="logout.php">Logout</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li> -->
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li> -->
       </ul>
     </div>
   </div>
@@ -130,7 +113,6 @@
                                 <td class="text-center"><?= $data['status'] ?></td>
                                 <td class="text-center"><?= $data['tanggal']?></td>
                                 <td class="text-center">
-                                <!-- <button class="btn btn-primary bi bi-save" name="bsimpan" type="submit"></button> -->
                                 <a href="edit-data-suspek.php?id=<?php echo $data['id_suspek'] ?>"><button class="btn btn-warning bi bi-pencil-square" name="bedit" type="submit"></button></a>
                                 <a href="hapus.php?idp=<?php echo $data['id_suspek'] ?>" onclick="return confirm('Yakin ingin menghapus ?')"><button class="btn btn-danger bi bi-trash" name="bedit" type="submit"></button></a>
                                 </td>
@@ -149,7 +131,6 @@
           
      </div> 
     <!-- Akhir Kontainer -->
-    <a href="logout.php" class="btn btn-person">logout</a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
   </body>
 </html>
