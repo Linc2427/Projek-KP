@@ -1,0 +1,124 @@
+<?php
+    	session_start();
+        include 'db.php';
+        if($_SESSION['login'] != true){
+            echo '<script>window.location="login.php"</script>';
+        }
+    // Menanpilkan data dari tabel tb_penumpang
+        $barang = mysqli_query($conn, "SELECT * FROM tb_suspek WHERE id_barang = '".$_GET['id']."' ");
+        if(mysqli_num_rows($barang) == 0){
+            echo '<script>window.location="dashboard.php"</script>';
+        }
+        $b = mysqli_fetch_object($barang);
+        // menamasukkan ke tb_suspek
+        // $sus = mysqli_query($conn, "SELECT * FROM tb_suspek WHERE ");
+?>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  </head>
+    
+  <body>
+      <!-- Awal Kontainer -->
+    <div class="container">
+        <h3 class="text-center">Selamat Datang</h3>
+        <h4 class="text-center">Silahkan Input Data Barang</h4>
+          
+        <!-- Awal Row -->
+        <div class="row">
+            <!-- Awal col --> 
+            <div class="col-md-8 mx-auto">
+                <!-- Awal card --> 
+                <div class="card">
+                    <div class="card-header bg-primary text-light">
+                        Form Input Data Barang
+                    </div>
+                    <div class="card-body">
+                        <!-- Awal form -->
+                        <form method="post">
+                            <div class="mb-2">
+                                <label class="form-label">Nama Penerbangan</label>
+                                <!-- <input type="text" name="tkode" class="form-control" placeholder="Masukkan Nama Penerbangan"> -->
+                                <input type="text" name="nama" class="form-control" placeholder="Masukkan Nomor Penerbangan" value="<?php echo $b->nama_penerbangan ?>" required>
+                            </div>
+                            
+                            <div class="mb-2">
+                                <label class="form-label">Nama Penumpang</label>
+                                <!-- <input type="text" name="tnamap" class="form-control" placeholder="Masukkan Nama Penumpang"> -->
+                                <input type="text" name="tnamap" class="form-control" placeholder="Masukkan Nama Penumpang" value="<?php echo $b->nama_penumpang ?>" required>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label">Status</label>
+                                <select class="form-select" name="tstatus">
+                                <option>--Pilih--</option>
+                                    <?php
+                                        $status = mysqli_query($conn, "SELECT * FROM tb_status ORDER BY id_status DESC"); 
+                                            while($r = mysqli_fetch_array($status)){
+                                    ?> 
+                                    <option value="<?php echo $r['status'] ?>"><?php echo $r['status'] ?></option>
+                                <?php } ?>
+                                </select>
+                            </div>
+                        <div class="text-center">
+                            <hr>
+                            <button class="btn btn-primary" name="bsimpan" type="submit">Simpan</button>
+                            <button class="btn btn-danger" name="bbatal" type="reset">Batalkan</button>
+                        </div>     
+                        </div>
+                        </form>
+                        <!-- Akhir form -->
+                        <?php 
+					if(isset($_POST['bsimpan'])){
+
+						// data inputan dari form
+						$nama_penerbangan 	= $_POST['nama'];
+						$nama_penumpang 	= $_POST['tnamap'];
+						$nama_barang 		= $_POST['tnamab'];
+						$kategori_barang 	= $_POST['tkategoribarang'];
+						$jumlah 	        = $_POST['tjumlah'];
+                        $status 	        = $_POST['tstatus'];
+                        $satuan 	 	    = $_POST['tsatuan'];
+						$tanggal 	 	    = $_POST['tTanggal'];
+                        $update = mysqli_query($conn, "INSERT INTO tb_suspek SET 
+												nama_penerbangan = '".$nama_penerbangan."',
+												nama_penumpang = '".$nama_penumpang."',
+												nama_barang = '".$nama_barang."',
+												kategori_barang = '".$kategori_barang."',
+												jumlah = '".$jumlah."',
+                                                status = '".$status."',
+                                                satuan = '".$satuan."',
+												tanggal = '".$tanggal."'
+												WHERE id_barang = '".$b->id_barang."'	");
+						if($update){
+							echo '<script>alert("Ubah data berhasil")</script>';
+							echo '<script>window.location="dashboard.php"</script>';
+						}else{
+							echo 'gagal '.mysqli_error($conn);
+						}
+                    }
+                    
+						
+                        ?>
+                        
+                    </div>
+                    <div class="card-footer bg-primary">
+                        
+                    </div>
+                </div>
+                <!-- Akhir card -->
+            </div>  
+            <!-- Akhir col -->
+        </div>
+        <!-- Akhir Row -->        
+          
+     </div> 
+    <!-- Akhir Kontainer -->
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+  </body>
+</html>
