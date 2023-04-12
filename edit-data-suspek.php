@@ -10,8 +10,6 @@
             echo '<script>window.location="dashboard.php"</script>';
         }
         $b = mysqli_fetch_object($barang);
-        // menamasukkan ke tb_suspek
-        // $sus = mysqli_query($conn, "SELECT * FROM tb_suspek WHERE ");
 ?>
 
 <!doctype html>
