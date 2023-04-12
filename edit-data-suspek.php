@@ -79,7 +79,7 @@
                             <div class="mb-2">
                                 <label class="form-label">Satuan</label>
                                 <select class="form-select" name="tsatuan">
-                                    <option>--Pilih--</option>
+                                    <option value="">--Pilih--</option>
                                     <option value="Unit">Unit</option>
                                     <option value="Kotak">Kotak</option>
                                     <option value="Pcs">Pcs</option>
@@ -96,7 +96,7 @@
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select class="form-select" name="tstatus">
-                                <option>--Pilih--</option>
+                                <option value="">--Pilih--</option>
                                     <?php
                                         $status = mysqli_query($conn, "SELECT * FROM tb_status ORDER BY id_status DESC"); 
                                             while($r = mysqli_fetch_array($status)){
@@ -117,7 +117,6 @@
 					if(isset($_POST['bsimpan'])){
 
 						// data inputan dari form
-                        $id_suspek = $_POST['id'];
 						$nomor_penerbangan 	= $_POST['nama'];
 						$nama_penumpang 	= $_POST['tnamap'];
 						$nama_barang 		= $_POST['tnamab'];
