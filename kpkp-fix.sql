@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2023 at 02:57 AM
+-- Generation Time: Apr 12, 2023 at 09:05 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -88,7 +88,8 @@ CREATE TABLE `tb_penumpang` (
 INSERT INTO `tb_penumpang` (`id_penumpang`, `nomor`, `nama_penumpang`) VALUES
 (1, '020Y004B0094', 'Dapit'),
 (2, '8179481734', 'Jarjit'),
-(3, '956879945', 'Upil');
+(3, '0981823kjjkha', 'Messi'),
+(4, 'kjshd909012', 'orang');
 
 -- --------------------------------------------------------
 
@@ -106,8 +107,8 @@ CREATE TABLE `tb_status` (
 --
 
 INSERT INTO `tb_status` (`id_status`, `status`) VALUES
-(1, 'Aktif'),
-(2, 'Tidak Aktif');
+(1, 'Tidak Aktif'),
+(2, 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -116,8 +117,8 @@ INSERT INTO `tb_status` (`id_status`, `status`) VALUES
 --
 
 CREATE TABLE `tb_suspek` (
-  `id_barang` int(11) NOT NULL,
-  `nama_penerbangan` varchar(100) NOT NULL,
+  `id_suspek` int(11) NOT NULL,
+  `nomor_penerbangan` varchar(100) NOT NULL,
   `nama_penumpang` varchar(100) NOT NULL,
   `nama_barang` varchar(100) NOT NULL,
   `kategori_barang` varchar(100) NOT NULL,
@@ -132,10 +133,12 @@ CREATE TABLE `tb_suspek` (
 -- Dumping data for table `tb_suspek`
 --
 
-INSERT INTO `tb_suspek` (`id_barang`, `nama_penerbangan`, `nama_penumpang`, `nama_barang`, `kategori_barang`, `jumlah`, `satuan`, `tanggal`, `tanggal_simpan`, `status`) VALUES
+INSERT INTO `tb_suspek` (`id_suspek`, `nomor_penerbangan`, `nama_penumpang`, `nama_barang`, `kategori_barang`, `jumlah`, `satuan`, `tanggal`, `tanggal_simpan`, `status`) VALUES
 (1, 'GDI DN-898', 'Alshad Ahmad', 'Pisau', 'Senjata Tajam', '2', 'Unit ', '2023-03-24', '2023-03-30 03:08:08', ''),
-(20, 'shdjfksdf', 'aldrik', 'embo', 'Material yang Teroksidasi', '1', 'Kotak', '2023-04-04', '2023-04-04 05:09:48', ''),
-(26, '020Y004B0094', 'Dapit', '', '', '', '', '0000-00-00', '2023-04-06 06:31:43', 'Tidak Aktif');
+(2, 'shdjfksdf', 'aldrik', 'embo', 'Material yang Teroksidasi', '1', 'Kotak', '2023-04-04', '2023-04-04 05:09:48', ''),
+(3, '020Y004B0094', 'Dapit', 'askld', 'Bahan Peledak', '4', 'Kotak', '2023-04-29', '2023-04-12 04:44:56', 'Aktif'),
+(21, '8179481734', 'Jarjit', 'bom', 'Bahan Peledak', '3', 'Kotak', '2023-04-12', '2023-04-12 04:44:11', 'Aktif'),
+(24, 'kjshd909012', 'caca', '', '', '', '', '2023-04-12', '2023-04-12 04:41:38', 'Aktif');
 
 --
 -- Indexes for dumped tables
@@ -169,7 +172,7 @@ ALTER TABLE `tb_status`
 -- Indexes for table `tb_suspek`
 --
 ALTER TABLE `tb_suspek`
-  ADD PRIMARY KEY (`id_barang`);
+  ADD PRIMARY KEY (`id_suspek`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -191,7 +194,7 @@ ALTER TABLE `tb_kategori`
 -- AUTO_INCREMENT for table `tb_penumpang`
 --
 ALTER TABLE `tb_penumpang`
-  MODIFY `id_penumpang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_penumpang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_status`
@@ -203,7 +206,7 @@ ALTER TABLE `tb_status`
 -- AUTO_INCREMENT for table `tb_suspek`
 --
 ALTER TABLE `tb_suspek`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_suspek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -23,6 +23,7 @@
     
   <body>
     <!-- Nav Bar Start -->
+      
     <nav class="navbar navbar-expand-lg" style="background-color: #34eb49;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Nama Web</a>
@@ -40,23 +41,6 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="logout.php">Logout</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li> -->
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li> -->
       </ul>
     </div>
   </div>
@@ -83,13 +67,6 @@
                             <div class="mb-2">
                                 <label class="form-label">Cari</label>
                                 <input type="text" name="tcari" value="<?php if(isset($_POST['bcari'])){echo $_POST['bcari'];} ?>" class="form-control" placeholder="Scan Here">
-                              
-                            <!-- <div class="mb-2">
-                                <label class="form-label">Nama Penumpang</label>
-                                <input type="text" name="tnamap" class="form-control" placeholder="Masukkan Nama Penumpang">
-                            </div> -->
-                            
-                            
                         <div class="text-center">
                             <hr>
                             <button class="btn btn-primary bi bi-search" name="bcari" type="submit"> Cari</button>
@@ -176,9 +153,7 @@
                                 <td><?= $data['nomor'] ?></td>
                                 <td><?= $data['nama_penumpang'] ?></td>
                                 <td>
-                                <!-- <button class="btn btn-primary bi bi-save" name="bsimpan" type="submit"></button> -->
                                 <a href="edit-data.php?id=<?php echo $data['id_penumpang'] ?>"><button class="btn btn-warning bi bi-pencil-square" name="bedit" type="submit">Edit </button></a>
-                                <!-- <a href="hapus.php?idp=<?php echo $data['id_penumpang'] ?>" onclick="return confirm('Yakin ingin menghapus ?')"><button class="btn btn-danger bi bi-trash" name="bedit" type="submit"></button></a> -->
                                 </td>
                             </tr>
                             
@@ -195,7 +170,6 @@
           
      </div> 
     <!-- Akhir Kontainer -->
-    <a href="logout.php" class="btn btn-person">logout</a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
   </body>
 </html>
