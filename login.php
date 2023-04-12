@@ -43,7 +43,6 @@ if (isset($_POST['submit'])) {
             <div class="row">
                 <div class="col-md-6 side-image">
                     <!-------Image-------->
-                    <!-- <img src="ap.png" alt="Logo Angkasa Pura"> -->
                 </div>
                 <div class="col-md-6 right">
                     <form action="" method="post" enctype="multipart/form">
@@ -62,7 +61,6 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="input-field">
                             <input type="submit" name="submit" class="submit" value="Submit">
-                            <!-- <button name="submit" class="btn">Login</button> -->
                         </div>
                      </div>
                      </form>
