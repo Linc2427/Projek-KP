@@ -10,8 +10,6 @@
             echo '<script>window.location="dashboard.php"</script>';
         }
         $b = mysqli_fetch_object($barang);
-        // menamasukkan ke tb_suspek
-        // $sus = mysqli_query($conn, "SELECT * FROM tb_suspek WHERE ");
 ?>
 
 <!doctype html>
@@ -114,42 +112,37 @@
                         </form>
                         <!-- Akhir form -->
                         <?php 
-					if(isset($_POST['bsimpan'])){
-
-						// data inputan dari form
-                        $id_suspek = $_POST['id'];
-						$nomor_penerbangan 	= $_POST['nama'];
-						$nama_penumpang 	= $_POST['tnamap'];
-						$nama_barang 		= $_POST['tnamab'];
-						$kategori_barang 	= $_POST['tkategoribarang'];
-						$jumlah 	        = $_POST['tjumlah'];
-                        $status 	        = $_POST['tstatus'];
-                        $satuan 	 	    = $_POST['tsatuan'];
-						$tanggal 	 	    = $_POST['tTanggal'];
-                        $update = mysqli_query($conn, "UPDATE tb_suspek SET 
-												nomor_penerbangan = '".$nomor_penerbangan."',
-												nama_penumpang = '".$nama_penumpang."',
-												nama_barang = '".$nama_barang."',
-												kategori_barang = '".$kategori_barang."',
-												jumlah = '".$jumlah."',
-                                                status = '".$status."',
-                                                satuan = '".$satuan."',
-												tanggal = '".$tanggal."'
-												WHERE id_suspek = '".$b->id_suspek."'");
-						if($update){
-							echo '<script>alert("Ubah data berhasil")</script>';
-							echo '<script>window.location="suspek.php"</script>';
-						}else{
-							echo 'gagal '.mysqli_error($conn);
-						}
-                    }
-                    
-						
-                        ?>
-                        
+				//Jika Tombol Ditekan
+				if(isset($_POST['bsimpan'])){
+				// data inputan dari form
+					$nomor_penerbangan 	= $_POST['nama'];
+					$nama_penumpang 	= $_POST['tnamap'];
+					$nama_barang 		= $_POST['tnamab'];
+					$kategori_barang 	= $_POST['tkategoribarang'];
+					$jumlah 	        = $_POST['tjumlah'];
+                        		$status 	        = $_POST['tstatus'];
+                        		$satuan 	 	    = $_POST['tsatuan'];
+					$tanggal 	 	    = $_POST['tTanggal'];
+                        		$update = mysqli_query($conn, "UPDATE tb_suspek SET 
+									nomor_penerbangan = '".$nomor_penerbangan."',
+									nama_penumpang = '".$nama_penumpang."',
+									nama_barang = '".$nama_barang."',
+									kategori_barang = '".$kategori_barang."',
+									jumlah = '".$jumlah."',
+                                                			status = '".$status."',
+                                                			satuan = '".$satuan."',
+									tanggal = '".$tanggal."'
+									WHERE id_suspek = '".$b->id_suspek."'");
+				if($update){
+					echo '<script>alert("Ubah data berhasil")</script>';
+					echo '<script>window.location="suspek.php"</script>';
+				}else{
+					echo 'gagal '.mysqli_error($conn);
+			}
+                    }			
+                        ?>   
                     </div>
                     <div class="card-footer bg-primary">
-                        
                     </div>
                 </div>
                 <!-- Akhir card -->
@@ -160,7 +153,6 @@
           
      </div> 
     <!-- Akhir Kontainer -->
-      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
   </body>
 </html>
