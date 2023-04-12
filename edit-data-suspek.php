@@ -79,7 +79,6 @@
                                 <select class="form-select" name="tsatuan" required>
                                     <option value="">--Pilih--</option>
                                     <option value="Unit">Unit</option>
-                                    <option value="Kotak">Kotak</option>
                                     <option value="Pcs">Pcs</option>
                                     <option value="Box">Box</option>
                                 </select>
@@ -94,7 +93,7 @@
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select class="form-select" name="tstatus" required>
-                                <!-- <option value="">--Pilih--</option> -->
+                                <option value="">--Pilih--</option>
                                     <?php
                                         $status = mysqli_query($conn, "SELECT * FROM tb_status ORDER BY id_status DESC"); 
                                             while($r = mysqli_fetch_array($status)){
