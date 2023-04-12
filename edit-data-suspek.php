@@ -60,7 +60,7 @@
                             <div class="mb-2">
                                 <label class="form-label">Kategori Barang</label>
                                 <select class="form-select" name="tkategoribarang">
-                                <option>--Pilih--</option>
+                                <option value="">--Pilih--</option>
                                     <?php
                                         $kategori = mysqli_query($conn, "SELECT * FROM tb_kategori ORDER BY id_kategori DESC"); 
                                             while($r = mysqli_fetch_array($kategori)){
@@ -72,14 +72,14 @@
                             <div class="col">
                                 <div class="mb-2">
                                 <label class="form-label">Jumlah</label>
-                                <input type="number" name="tjumlah" class="form-control" placeholder="Masukkan Jumlah Barang">
+                                <input type="number" name="tjumlah" class="form-control" placeholder="Masukkan Jumlah Barang" value="<?php echo $b->jumlah ?>" required>
                                 </div>
                             </div>    
                             <div class="col">
                             <div class="mb-2">
                                 <label class="form-label">Satuan</label>
                                 <select class="form-select" name="tsatuan">
-                                    <option>--Pilih--</option>
+                                    <option value="">--Pilih--</option>
                                     <option value="Unit">Unit</option>
                                     <option value="Kotak">Kotak</option>
                                     <option value="Pcs">Pcs</option>
@@ -96,7 +96,7 @@
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select class="form-select" name="tstatus">
-                                <option>--Pilih--</option>
+                                <option value="">--Pilih--</option>
                                     <?php
                                         $status = mysqli_query($conn, "SELECT * FROM tb_status ORDER BY id_status DESC"); 
                                             while($r = mysqli_fetch_array($status)){
