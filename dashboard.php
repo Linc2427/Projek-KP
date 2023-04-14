@@ -49,9 +49,7 @@
 
       <!-- Awal Kontainer -->
     <div class="container">
-        <h3 class="text-center">Selamat Datang</h3>
-        <h4 class="text-center">Silahkan Input Data</h4>
-          
+          <br>
         <!-- Awal Row -->
         <div class="row">
             <!-- Awal col --> 
@@ -119,16 +117,12 @@
                         </div>
 
                         <!-- Tabel -->
-                        <div class="table-responsive">
+                        <div class="table-responsive text-center">
                         <table class="table table-striped table-hover">
                             <tr>
                                 <th>No</th>
                                 <th>Nomor Penerbangan</th>
                                 <th>Nama Penumpang</th>
-                                <!-- <th class="text-center">Nama Barang</th>
-                                <th class="text-center">Kategori Barang</th>
-                                <th class="text-center">Jumlah</th> -->
-                                <!-- <th class="text-center">Tanggal</th> -->
                                 <th>Aksi</th>
                         </tr>
                             <!-- Menampilkan Data yang ada di Database -->
@@ -153,7 +147,7 @@
                                 <td><?= $data['nomor'] ?></td>
                                 <td><?= $data['nama_penumpang'] ?></td>
                                 <td>
-                                <a href="edit-data.php?id=<?php echo $data['id_penumpang'] ?>"><button class="btn btn-warning bi bi-pencil-square" name="bedit" type="submit">Edit </button></a>
+                                <a href="edit-data.php?id=<?php echo $data['id_penumpang'] ?>"><button class="btn btn-success bi bi-person-fill-add" name="bedit" type="submit">Tambah </button></a>
                                 </td>
                             </tr>
                             

@@ -4,7 +4,7 @@
         if($_SESSION['login'] != true){
             echo '<script>window.location="login.php"</script>';
         }
-    // Menanpilkan data dari tabel tb_penumpang
+    // Menanpilkan data dari tabel tb_suspek
         $barang = mysqli_query($conn, "SELECT * FROM tb_suspek WHERE id_suspek = '".$_GET['id']."' ");
         if(mysqli_num_rows($barang) == 0){
             echo '<script>window.location="dashboard.php"</script>';
@@ -41,18 +41,15 @@
                         <form method="post">
                             <div class="mb-2">
                                 <label class="form-label">Nomor Penerbangan</label>
-                                <!-- <input type="text" name="tkode" class="form-control" placeholder="Masukkan Nama Penerbangan"> -->
                                 <input type="text" name="nama" class="form-control" placeholder="Masukkan Nomor Penerbangan" value="<?php echo $b->nomor_penerbangan ?>" required>
                             </div>
                             
                             <div class="mb-2">
                                 <label class="form-label">Nama Penumpang</label>
-                                <!-- <input type="text" name="tnamap" class="form-control" placeholder="Masukkan Nama Penumpang"> -->
                                 <input type="text" name="tnamap" class="form-control" placeholder="Masukkan Nama Penumpang" value="<?php echo $b->nama_penumpang ?>" required>
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Nama Barang</label>
-                                <!-- <input type="text" name="tnamab" class="form-control" placeholder="Masukkan Nama Barang"> -->
                                 <input type="text" name="tnamab" class="form-control" placeholder="Masukkan Nama Barang" value="<?php echo $b->nama_barang ?>" required>
                             </div>
                             <div class="mb-2">
@@ -93,12 +90,14 @@
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select class="form-select" name="tstatus" required>
-                                <option value="">--Pilih--</option>
+                                <!-- <option value="">--Pilih--</option> -->
                                     <?php
                                         $status = mysqli_query($conn, "SELECT * FROM tb_status ORDER BY id_status DESC"); 
                                             while($r = mysqli_fetch_array($status)){
                                     ?> 
-                                    <option value="<?php echo $r['status'] ?>"><?php echo $r['status'] ?></option>
+                                    <!-- <option value="<?php echo $r['status'] ?>"><?php echo $r['status']?></option> -->
+                                    <option value="1"  {{ old('id_status') == 1 ? 'selected' : '' }}><?php echo $r['status']?></option>
+                                    <option value="2"  {{ old('id_status') == 2 ? 'selected' : '' }}><?php echo $r['status']?></option>
                                 <?php } ?>
                                 </select>
                             </div>
