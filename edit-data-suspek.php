@@ -24,9 +24,6 @@
   <body>
       <!-- Awal Kontainer -->
     <div class="container">
-        <h3 class="text-center">Selamat Datang</h3>
-        <h4 class="text-center">Silahkan Input Data Barang</h4>
-          
         <!-- Awal Row -->
         <div class="row">
             <!-- Awal col --> 
@@ -55,7 +52,8 @@
                             <div class="mb-2">
                                 <label class="form-label">Kategori Barang</label>
                                 <select class="form-select" name="tkategoribarang" required>
-                                <option value="">--Pilih--</option>
+                                <optgroup label="--Pilih--"></optgroup>
+                                <!-- <option value="">--Pilih--</option> -->
                                     <?php
                                         $kategori = mysqli_query($conn, "SELECT * FROM tb_kategori ORDER BY id_kategori DESC"); 
                                             while($r = mysqli_fetch_array($kategori)){
@@ -74,7 +72,8 @@
                             <div class="mb-2">
                                 <label class="form-label">Satuan</label>
                                 <select class="form-select" name="tsatuan" required>
-                                    <option value="">--Pilih--</option>
+                                <optgroup label=--Pilih--></optgroup>
+                                    <!-- x -->
                                     <option value="Unit">Unit</option>
                                     <option value="Pcs">Pcs</option>
                                     <option value="Box">Box</option>
@@ -91,13 +90,14 @@
                                 <label class="form-label">Status</label>
                                 <select class="form-select" name="tstatus" required>
                                 <!-- <option value="">--Pilih--</option> -->
+                                <optgroup label=test></optgroup>
                                     <?php
                                         $status = mysqli_query($conn, "SELECT * FROM tb_status ORDER BY id_status DESC"); 
                                             while($r = mysqli_fetch_array($status)){
                                     ?> 
-                                    <!-- <option value="<?php echo $r['status'] ?>"><?php echo $r['status']?></option> -->
-                                    <option value="1"  {{ old('id_status') == 1 ? 'selected' : '' }}><?php echo $r['status']?></option>
-                                    <option value="2"  {{ old('id_status') == 2 ? 'selected' : '' }}><?php echo $r['status']?></option>
+                                    <option value="<?php echo $r['status'] ?>"><?php echo $r['status']?></option>
+                                    <!-- <option value="1"  {{ if (old'id_status') == 1 ? 'selected' : '' }}><?php echo $r['status']?></option> -->
+                                    <!-- <option value="2"  {{ old('id_status') == 2 ? 'selected' : '' }}><?php echo $r['status']?></option> -->
                                 <?php } ?>
                                 </select>
                             </div>
@@ -109,6 +109,7 @@
                         </div>
                         </form>
                         <!-- Akhir form -->
+
                         <?php 
 					if(isset($_POST['bsimpan'])){
 
