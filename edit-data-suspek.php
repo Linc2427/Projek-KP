@@ -36,9 +36,7 @@
                     <div class="card-body">
                         <!-- Awal form -->
                         <form method="post">
-                        <div class="mb-2">
-                                <input type="text" name="id" class="form-control" value="<?php echo $b['id_suspek'] ?>">
-                            </div>
+                                <input type="hidden" name="id" class="form-control" value="<?php echo $b['id_suspek'] ?>">
                             <div class="mb-2">
                                 <label class="form-label">Nomor Penerbangan</label>
                                 <input type="text" name="nama" class="form-control" placeholder="Masukkan Nomor Penerbangan" value="<?php echo $b['nomor_penerbangan'] ?>" required>
@@ -55,14 +53,21 @@
                             <div class="mb-2">
                                 <label class="form-label">Kategori Barang</label>
                                 <select class="form-select" name="tkategoribarang" required>
+                                <?php $kategori_barang = $b['kategori_barang']; ?>
                                 <!-- <optgroup label="--Pilih--"></optgroup> -->
                                 <option value="">--Pilih--</option>
-                                    <?php
-                                        $kategori = mysqli_query($conn, "SELECT * FROM tb_kategori ORDER BY id_kategori DESC"); 
-                                            while($r = mysqli_fetch_array($kategori)){
-                                    ?> 
-                                    <option value="<?php echo $r['kategori_barang'] ?>"><?php echo $r['kategori_barang'] ?></option>
-                                <?php } ?>
+                                    <option value="Benda Tajam" <?php echo ($kategori_barang == 'Benda Tajam') ? "selected": "" ?>>Benda Tajam</option>
+                                    <option value="Material Korosif" <?php echo ($kategori_barang == 'Material Korosif') ? "selected": "" ?>>Material Korosif</option>
+                                    <option value="Bahan Peledak" <?php echo ($kategori_barang == 'Bahan Peledak') ? "selected": "" ?>>Bahan Peledak</option>
+                                    <option value="Gas Bertekanan" <?php echo ($kategori_barang == 'Gas Bertekana') ? "selected": "" ?>>Gas Bertekanan</option>
+                                    <option value="Cairan Mudah Terbakar" <?php echo ($kategori_barang == 'Cairan Mudah Terbakar') ? "selected": "" ?>>Cairan Mudah Terbakar</option>
+                                    <option value="Benda Padat Mudah Terbakar" <?php echo ($kategori_barang == 'Benda Padat Mudah Terbaka') ? "selected": "" ?>>Benda Padat Mudah Terbakar</option>
+                                    <option value="Material yang Teroksidasi" <?php echo ($kategori_barang == 'Material yang Teroksidasi') ? "selected": "" ?>>Material yang Teroksidasi</option>
+                                    <option value="Zat Radioaktif" <?php echo ($kategori_barang == 'Zat Radioaktif') ? "selected": "" ?>>Zat Radioaktif</option>
+                                    <option value="Zat Beracun" <?php echo ($kategori_barang == 'Zat Beracun') ? "selected": "" ?>>Zat Beracun</option>
+                                    <option value="Agen Etiologis" <?php echo ($kategori_barang == 'Agen Etiologis') ? "selected": "" ?>>Agen Etiologis</option>
+                                    <option value="Gas Padat" <?php echo ($kategori_barang == 'Gas Padat') ? "selected": "" ?>>Gas Padat</option>
+                                    <option value="Senjata Tajam" <?php echo ($kategori_barang == 'Senjata Tajam') ? "selected": "" ?>>Senjata Tajam</option>
                                 </select>
                             <div class="row">
                             <div class="col">

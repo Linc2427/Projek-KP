@@ -113,7 +113,7 @@
                                 <td class="text-center"><?= $data['status'] ?></td>
                                 <td class="text-center"><?= $data['tanggal']?></td>
                                 <td class="text-center">
-                                <a href="edit-sus.php?id=<?php echo $data['id_suspek'] ?>"><button class="btn btn-warning bi bi-pencil-square" name="bedit" type="submit"></button></a>
+                                <a href="edit-data-suspek.php?id=<?php echo $data['id_suspek'] ?>"><button class="btn btn-warning bi bi-pencil-square" name="bedit" type="submit"></button></a>
                                 <a href="hapus.php?idp=<?php echo $data['id_suspek'] ?>" onclick="return confirm('Yakin ingin menghapus ?')"><button class="btn btn-danger bi bi-trash" name="bedit" type="submit"></button></a>
                                 </td>
                             </tr>
