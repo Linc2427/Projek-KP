@@ -9,7 +9,7 @@
         if(mysqli_num_rows($barang) == 0){
             echo '<script>window.location="dashboard.php"</script>';
         }
-        $b = mysqli_fetch_object($barang);
+        $b = mysqli_fetch_assoc($barang);
 ?>
 
 <!doctype html>
@@ -36,24 +36,27 @@
                     <div class="card-body">
                         <!-- Awal form -->
                         <form method="post">
+                        <div class="mb-2">
+                                <input type="text" name="id" class="form-control" value="<?php echo $b['id_suspek'] ?>">
+                            </div>
                             <div class="mb-2">
                                 <label class="form-label">Nomor Penerbangan</label>
-                                <input type="text" name="nama" class="form-control" placeholder="Masukkan Nomor Penerbangan" value="<?php echo $b->nomor_penerbangan ?>" required>
+                                <input type="text" name="nama" class="form-control" placeholder="Masukkan Nomor Penerbangan" value="<?php echo $b['nomor_penerbangan'] ?>" required>
                             </div>
                             
                             <div class="mb-2">
                                 <label class="form-label">Nama Penumpang</label>
-                                <input type="text" name="tnamap" class="form-control" placeholder="Masukkan Nama Penumpang" value="<?php echo $b->nama_penumpang ?>" required>
+                                <input type="text" name="tnamap" class="form-control" placeholder="Masukkan Nama Penumpang" value="<?php echo $b['nama_penumpang'] ?>" required>
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Nama Barang</label>
-                                <input type="text" name="tnamab" class="form-control" placeholder="Masukkan Nama Barang" value="<?php echo $b->nama_barang ?>" required>
+                                <input type="text" name="tnamab" class="form-control" placeholder="Masukkan Nama Barang" value="<?php echo $b['nama_barang'] ?>" required>
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">Kategori Barang</label>
                                 <select class="form-select" name="tkategoribarang" required>
-                                <optgroup label="--Pilih--"></optgroup>
-                                <!-- <option value="">--Pilih--</option> -->
+                                <!-- <optgroup label="--Pilih--"></optgroup> -->
+                                <option value="">--Pilih--</option>
                                     <?php
                                         $kategori = mysqli_query($conn, "SELECT * FROM tb_kategori ORDER BY id_kategori DESC"); 
                                             while($r = mysqli_fetch_array($kategori)){
@@ -65,15 +68,14 @@
                             <div class="col">
                                 <div class="mb-2">
                                 <label class="form-label">Jumlah</label>
-                                <input type="number" name="tjumlah" class="form-control" placeholder="Masukkan Jumlah Barang" value="<?php echo $b->jumlah ?>" required>
+                                <input type="number" name="tjumlah" class="form-control" placeholder="Masukkan Jumlah Barang" value="<?php echo $b['jumlah'] ?>" required>
                                 </div>
                             </div>    
                             <div class="col">
                             <div class="mb-2">
                                 <label class="form-label">Satuan</label>
                                 <select class="form-select" name="tsatuan" required>
-                                <optgroup label=--Pilih--></optgroup>
-                                    <!-- x -->
+                                <option value=""></option>
                                     <option value="Unit">Unit</option>
                                     <option value="Pcs">Pcs</option>
                                     <option value="Box">Box</option>
@@ -89,17 +91,10 @@
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select class="form-select" name="tstatus" required>
-                                <!-- <option value="">--Pilih--</option> -->
-                                <optgroup label=test></optgroup>
-                                    <?php
-                                        $status = mysqli_query($conn, "SELECT * FROM tb_status ORDER BY id_status DESC"); 
-                                            while($r = mysqli_fetch_array($status)){
-                                    ?> 
-                                    <option value="<?php echo $r['status'] ?>"><?php echo $r['status']?></option>
-                                    <!-- <option value="1"  {{ if (old'id_status') == 1 ? 'selected' : '' }}><?php echo $r['status']?></option> -->
-                                    <!-- <option value="2"  {{ old('id_status') == 2 ? 'selected' : '' }}><?php echo $r['status']?></option> -->
-                                <?php } ?>
-                                </select>
+                                <?php $status = $b['status']; ?>
+                                    <option <?php echo ($status == 'Aktif') ? "selected": "" ?>>Aktif</option>
+                                    <option <?php echo ($status == 'Tidak Aktif') ? "selected": "" ?>>Tidak Aktif</option>
+                                            </select>
                             </div>
                         <div class="text-center">
                             <hr>
@@ -114,6 +109,7 @@
 					if(isset($_POST['bsimpan'])){
 
 						// data inputan dari form
+                        $id          = $_POST['id'];
 						$nomor_penerbangan 	= $_POST['nama'];
 						$nama_penumpang 	= $_POST['tnamap'];
 						$nama_barang 		= $_POST['tnamab'];
@@ -122,17 +118,18 @@
                         $status 	        = $_POST['tstatus'];
                         $satuan 	 	    = $_POST['tsatuan'];
 						$tanggal 	 	    = $_POST['tTanggal'];
-                        $update = mysqli_query($conn, "UPDATE tb_suspek SET 
-												nomor_penerbangan = '".$nomor_penerbangan."',
-												nama_penumpang = '".$nama_penumpang."',
-												nama_barang = '".$nama_barang."',
-												kategori_barang = '".$kategori_barang."',
-												jumlah = '".$jumlah."',
-                                                status = '".$status."',
-                                                satuan = '".$satuan."',
-												tanggal = '".$tanggal."'
-												WHERE id_suspek = '".$b->id_suspek."'");
-						if($update){
+                        $update ="UPDATE `tb_suspek` SET 
+												`nomor_penerbangan` = '$nomor_penerbangan',
+												`nama_penumpang` = '$nama_penumpang',
+												`nama_barang` = '$nama_barang',
+                                                `kategori_barang` = '$kategori_barang',
+												`jumlah` = '$jumlah',
+                                                `status` = '$status',
+                                                `satuan` = '$satuan',
+												`tanggal` = '$tanggal'
+												WHERE `id_suspek` = $id";
+                        $query = mysqli_query($conn,$update);
+						if($query){
 							echo '<script>alert("Ubah data berhasil")</script>';
 							echo '<script>window.location="suspek.php"</script>';
 						}else{
