@@ -147,7 +147,7 @@
                                 <td><?= $data['nomor'] ?></td>
                                 <td><?= $data['nama_penumpang'] ?></td>
                                 <td>
-                                <a href="edit-data.php?id=<?php echo $data['id_penumpang'] ?>"><button class="btn btn-success bi bi-person-fill-add" name="bedit" type="submit">Tambah </button></a>
+                                <a href="edit-data-suspek.php?id=<?php echo $data['id_penumpang'] ?>"><button class="btn btn-success bi bi-person-fill-add" name="bedit" type="submit">Tambah </button></a>
                                 </td>
                             </tr>
                             

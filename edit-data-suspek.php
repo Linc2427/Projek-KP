@@ -75,10 +75,11 @@
                             <div class="mb-2">
                                 <label class="form-label">Satuan</label>
                                 <select class="form-select" name="tsatuan" required>
-                                <option value=""></option>
-                                    <option value="Unit">Unit</option>
-                                    <option value="Pcs">Pcs</option>
-                                    <option value="Box">Box</option>
+                                <?php $satuan = $b['satuan']; ?>
+                                    <option value="">---Pilih---</option>
+                                    <option value="Unit" <?php echo ($satuan == 'Unit') ? "selected": "" ?>>Unit</option>
+                                    <option value="Pcs" <?php echo ($satuan == 'Pcs') ? "selected": "" ?>>Pcs</option>
+                                    <option value="Box" <?php echo ($satuan == 'Box') ? "selected": "" ?>>Box</option>
                                 </select>
                             </div>    
                             </div>
