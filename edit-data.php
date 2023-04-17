@@ -64,14 +64,14 @@
                                 <input type="text" name="tnamap" class="form-control" placeholder="Masukkan Nama Penumpang" value="<?php echo $b->nama_penumpang ?>" required>
                             </div>
                             <label class="form-label">Status</label>
-                            <select name="tstatus">
+                            <select name="tstatus" class="form-select">
                                 <option>Aktif</option>
                                 <option>Tidak Aktif</option>
                             </select>
                         <div class="text-center">
                             <hr>
                             <button class="btn btn-primary" name="bsimpan" type="submit">Simpan</button>
-                            <button class="btn btn-danger" name="bbatal" type="reset">Batalkan</button>
+                            <!-- <a href="dashboard.php"><button class="btn btn-danger" name="bbatal">Batalkan</button></a> -->
                         </div>     
                         </div>
                         </form>
