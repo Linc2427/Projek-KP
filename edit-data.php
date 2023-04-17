@@ -64,13 +64,9 @@
                                 <input type="text" name="tnamap" class="form-control" placeholder="Masukkan Nama Penumpang" value="<?php echo $b->nama_penumpang ?>" required>
                             </div>
                             <label class="form-label">Status</label>
-                            <select class="form-select" name="tstatus">
-                                    <?php
-                                        $status = mysqli_query($conn, "SELECT * FROM tb_status ORDER BY id_status DESC"); 
-                                            while($r = mysqli_fetch_array($status)){
-                                    ?> 
-                                    <option value="<?php echo $r['status'] ?>"><?php echo $r['status'] ?></option>
-                                <?php } ?>
+                            <select name="tstatus">
+                                <option>Aktif</option>
+                                <option>Tidak Aktif</option>
                             </select>
                         <div class="text-center">
                             <hr>
