@@ -4,12 +4,14 @@
     if (!$conn) {
         die("<script>alert('Gagal tersambung dengan database.')</script>");
     }
+    date_default_timezone_set('Asia/jakarta');
 ?>
 <!DOCTYPE html>
 
 <html>
 <head>
 <title>ATNOS</title>
+<!-- <meta http-equiv="refresh" content="5"> -->
 <link rel="stylesheet" href="tabel.css">
 </head>
  <div class="text_box">
@@ -20,6 +22,17 @@
 <body>
 <div class="filter">
 </div>
+
+<h2><span id="time"></span></h2>
+<script type="text/javascript">
+function refreshTime() {
+  const timeDisplay = document.getElementById("time");
+  const dateString = new Date().toLocaleString();
+  const formattedString = dateString.replace(", ", " - ");
+  timeDisplay.textContent = formattedString;
+}
+  setInterval(refreshTime, 1000);
+</script>
 <table >
 <tr>
             <th width="60px">No</th>
@@ -31,7 +44,7 @@
                          <!-- Menampilkan Data yang ada di Database -->
                             <?php
                             $no = 1;
-                            $tampil = mysqli_query($conn, "SELECT * FROM `tb_suspek` WHERE `status` like 'Aktif' ORDER BY `id_suspek`;
+                            $tampil = mysqli_query($conn, "SELECT * FROM `tb_suspek` WHERE `status` like 'Aktif' ORDER BY `id_suspek` DESC;
                             ");
                                     while($data = mysqli_fetch_array($tampil)) {
                             ?>

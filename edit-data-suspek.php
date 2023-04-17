@@ -91,7 +91,7 @@
                             <div class="col">
                                 <div class="mb-2">
                                 <label class="form-label">Tanggal</label>
-                                <input type="date" name="tTanggal" class="form-control" placeholder="Masukkan Jumlah Barang" required>
+                                <input type="date" name="tTanggal" class="form-control" placeholder="Masukkan Jumlah Barang" value="<?php echo date('d:m:y') ?>" required>
                                 </div>
                             </div>   
                             <div class="mb-2">
