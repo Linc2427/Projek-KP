@@ -40,7 +40,7 @@
           <a class="nav-link active" aria-current="page" href="suspek.php">Data Suspek</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="penumpang.php">Monitor Penumpang</a>
+          <a class="nav-link active" aria-current="page" href="tes.php">Monitor Penumpang</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="logout.php">Logout</a>

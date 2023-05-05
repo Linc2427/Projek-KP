@@ -40,8 +40,12 @@ function refreshTime() {
             <th>Nama</th>
             <th>Status</th>
     </tr>
+
+    <div class='barisf'><div class='c1'><img name='img0' src='/display/images/jt-t.gif' width='190' height='45' /></div><div class='c2' id='cstext0'>JT 222</div><div class='c3'>12:25</div><div class='c4' id='0'>BANJARMASIN</div><div class='c5'>13</div><div class='c6'>14:11</div><div class='c7'>Boarding</div></div>
+
             <tbody>
                          <!-- Menampilkan Data yang ada di Database -->
+                         
                             <?php
                             $no = 1;
                             $tampil = mysqli_query($conn, "SELECT * FROM `tb_suspek` WHERE `status` like 'Aktif' ORDER BY `id_suspek` DESC;
