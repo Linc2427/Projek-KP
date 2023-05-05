@@ -13,7 +13,7 @@
     function autoRefresh() {
         window.location = window.location.href;
     }
-    setInterval('autoRefresh()', 5000);
+    setInterval('autoRefresh()', 35000);
     </script>
     
     <!-- Required meta tags -->
@@ -39,6 +39,13 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
+      }
+      
+      .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
       }
     </style>
   </head>
@@ -94,7 +101,6 @@
         </table>
       </div>
     </div>
-
     <script>
       var today = new Date(); /* new date object */
       var month = [
@@ -153,4 +159,6 @@
       }
     </script>
   </body>
+  <div class="footer">
+  <marquee onmouseout='this.start()' onmouseover='this.stop()' scrollamount='10'><img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSELAMAT DATANG DI TERMINAL 1 BANDAR UDARA INTERNASIONAL JUANDA SURABAYA&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspJANGAN MENINGGALKAN BARANG BAWAAN ANDA TANPA PENGAWASAN&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspDO NOT LEAVE YOUR LUGGAGE UNATTENDED&nbsp&nbsp<img src="ap1logo.png"width="60" height="30"/>&nbsp&nbspSILENT AIRPORT SUDAH DIBERLAKUKAN, MOHON PARA PENUMPANG SELALU MEMPERHATIKAN INFORMASI PENERBANGAN PADA MONITOR FIDS YANG TERSEDIA. TERIMAKASIH.&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSILENT AIRPORT POLICY HAS BEEN ENFORCED, PASSANGERS ARE ADVISED TO CHECK FLIGHT INFORMATION ON AVAILABLE FIDS SCREEN. THANK YOU.&nbsp&nbsp</marquee>
 </html>

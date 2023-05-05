@@ -77,7 +77,7 @@
                                 <input type="text" name="tcari" value="<?php if(isset($_POST['bcari'])){echo $_POST['bcari'];} ?>" class="form-control" placeholder="Scan Here">
                         <div class="text-center">
                             <hr>
-                            <button class="btn btn-primary bi bi-plus" name="bsimpan" type="submit"> Cari</button>
+                            <button class="btn btn-primary bi bi-plus" name="bsimpan" type="submit"> Tambah</button>
                             <button class="btn btn-primary bi bi-search" name="bcari" type="submit"> Cari</button>
                             <button class="btn btn-danger bi bi-bootstrap-reboot" name="breset" type="Batalkan"> Reset</button>
                         </div>     
@@ -104,7 +104,20 @@
                             }
                     
                         ?>
-                        
+                        <?php
+                              if (isset($_POST['bsimpan'])){
+                                $input=$_POST['tcari'];
+                                $array= explode (' ', $input);
+                                $data=$array();
+                                foreach ($array as $value) {
+                                  $parts = explode(' ', $value);
+                                  $data[] = array(
+                                    'nomor' => $parts[0],
+                                    'nama_penumpang' => $parts[1],
+                                  );
+                                }
+                              }
+                        ?>
                     </div>
                     <div class="card-footer bg-primary">
                         
@@ -182,7 +195,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
   </body>
   <div class="footer">
-    <marquee onmouseout='this.start()' onmouseover='this.stop()' scrollamount='9'><img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSELAMAT DATANG DI TERMINAL 1 BANDAR UDARA INTERNASIONAL JUANDA SURABAYA&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspJANGAN MENINGGALKAN BARANG BAWAAN ANDA TANPA PENGAWASAN&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspDO NOT LEAVE YOUR LUGGAGE UNAT TENDED&nbsp&nbsp<img src="ap1logo.png"width="60" height="30"/>&nbsp&nbspSILENT AIRPORT SUDAH DIBERLAKUKAN, MOHON PARA PENUMPANG SELALU MEMPERHATIKAN INFORMASI PENERBANGAN PADA MONITOR FIDS YANG TERSEDIA. TERIMAKASIH.&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSILENT AIRPORT POLICY HAS BEEN ENFORCED, PASSANGERS ARE ADVISED TO CHECK FLIGHT INFORMATION ON AVAILABLE FIDS SCREEN. THANK YOU.&nbsp&nbsp</marquee>
+    <marquee onmouseout='this.start()' onmouseover='this.stop()' scrollamount='9'><img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSELAMAT DATANG DI TERMINAL 1 BANDAR UDARA INTERNASIONAL JUANDA SURABAYA&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspJANGAN MENINGGALKAN BARANG BAWAAN ANDA TANPA PENGAWASAN&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspDO NOT LEAVE YOUR LUGGAGE UNATTENDED&nbsp&nbsp<img src="ap1logo.png"width="60" height="30"/>&nbsp&nbspSILENT AIRPORT SUDAH DIBERLAKUKAN, MOHON PARA PENUMPANG SELALU MEMPERHATIKAN INFORMASI PENERBANGAN PADA MONITOR FIDS YANG TERSEDIA. TERIMAKASIH.&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSILENT AIRPORT POLICY HAS BEEN ENFORCED, PASSANGERS ARE ADVISED TO CHECK FLIGHT INFORMATION ON AVAILABLE FIDS SCREEN. THANK YOU.&nbsp&nbsp</marquee>
 
 </div>
 </html>

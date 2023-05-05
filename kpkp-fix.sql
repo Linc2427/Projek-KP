@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2023 at 09:05 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: May 05, 2023 at 02:29 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `masuk` (
   `id` int(255) NOT NULL,
   `user` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `masuk`
@@ -49,7 +49,7 @@ INSERT INTO `masuk` (`id`, `user`, `pass`) VALUES
 CREATE TABLE `tb_kategori` (
   `id_kategori` int(255) NOT NULL,
   `kategori_barang` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_kategori`
@@ -79,17 +79,16 @@ CREATE TABLE `tb_penumpang` (
   `id_penumpang` int(255) NOT NULL,
   `nomor` varchar(255) NOT NULL,
   `nama_penumpang` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_penumpang`
 --
 
 INSERT INTO `tb_penumpang` (`id_penumpang`, `nomor`, `nama_penumpang`) VALUES
-(1, '020Y004B0094', 'Dapit'),
-(2, '8179481734', 'Jarjit'),
-(3, '0981823kjjkha', 'Messi'),
-(4, 'kjshd909012', 'orang');
+(5, 'JT 706', 'Cinta Uya'),
+(6, 'QZ 641', 'Arsila Tania Viranka'),
+(7, 'IW 1804', 'Dapit Santonio Putro');
 
 -- --------------------------------------------------------
 
@@ -100,7 +99,7 @@ INSERT INTO `tb_penumpang` (`id_penumpang`, `nomor`, `nama_penumpang`) VALUES
 CREATE TABLE `tb_status` (
   `id_status` int(255) NOT NULL,
   `status` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_status`
@@ -127,18 +126,15 @@ CREATE TABLE `tb_suspek` (
   `tanggal` date NOT NULL DEFAULT current_timestamp(),
   `tanggal_simpan` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_suspek`
 --
 
 INSERT INTO `tb_suspek` (`id_suspek`, `nomor_penerbangan`, `nama_penumpang`, `nama_barang`, `kategori_barang`, `jumlah`, `satuan`, `tanggal`, `tanggal_simpan`, `status`) VALUES
-(1, 'GDI DN-898', 'Alshad Ahmad', 'Pisau', 'Senjata Tajam', '2', 'Unit ', '2023-03-24', '2023-03-30 03:08:08', ''),
-(2, 'shdjfksdf', 'aldrik', 'embo', 'Material yang Teroksidasi', '1', 'Kotak', '2023-04-04', '2023-04-04 05:09:48', ''),
-(3, '020Y004B0094', 'Dapit', 'askld', 'Bahan Peledak', '4', 'Kotak', '2023-04-29', '2023-04-12 04:44:56', 'Aktif'),
-(21, '8179481734', 'Jarjit', 'bom', 'Bahan Peledak', '3', 'Kotak', '2023-04-12', '2023-04-12 04:44:11', 'Aktif'),
-(24, 'kjshd909012', 'caca', '', '', '', '', '2023-04-12', '2023-04-12 04:41:38', 'Aktif');
+(3, 'IW 1804', 'Dapit Santonio Putro', 'Gunting', 'Benda Tajam', '3', 'Unit', '2023-05-03', '2023-05-05 02:58:58', 'Aktif'),
+(24, 'QZ 641', 'Arsila Tania Viranka', 'Baygon', 'Zat Beracun', '1', 'Pcs', '2023-05-04', '2023-05-05 02:58:32', 'Aktif');
 
 --
 -- Indexes for dumped tables
@@ -194,7 +190,7 @@ ALTER TABLE `tb_kategori`
 -- AUTO_INCREMENT for table `tb_penumpang`
 --
 ALTER TABLE `tb_penumpang`
-  MODIFY `id_penumpang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_penumpang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_status`
@@ -206,7 +202,7 @@ ALTER TABLE `tb_status`
 -- AUTO_INCREMENT for table `tb_suspek`
 --
 ALTER TABLE `tb_suspek`
-  MODIFY `id_suspek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_suspek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
