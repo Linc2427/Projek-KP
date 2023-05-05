@@ -17,7 +17,7 @@
             $nomor_penerbangan 	= $_POST['nomor'];
             $nama_penumpang 	= $_POST['tnamap'];
             $status 	        = $_POST['tstatus'];
-            $update= mysqli_query($conn, "INSERT INTO `tb_suspek`(`id_suspek`, `nomor_penerbangan`, `nama_penumpang`, `status`) VALUES (null,'$nomor_penerbangan','$nama_penumpang','$status')");
+            $update= mysqli_query($conn, "INSERT INTO `tb_suspek`(`id_suspek`, `nomor_penerbangan`, `nama_penumpang`, `kategori_barang`, `jumlah`, `satuan`, `tanggal`, `status`) VALUES (null,'$nomor_penerbangan','$nama_penumpang','','', '', '', '$status')");
             if($update){
                 echo '<script>alert("Ubah data berhasil")</script>';
                 echo '<script>window.location="dashboard.php"</script>';
@@ -36,11 +36,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
   </head>
     
-  <body>
+<body>
+
+<!-- Nav Bar Start -->    
+    <nav class="navbar navbar-expand-lg" style="background-color: #ffc61d;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Golek.in</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto ms-auto">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="dashboard.php">Kembali</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+<!-- Nav Bar END -->
+
       <!-- Awal Kontainer -->
     <div class="container">
-        <h3 class="text-center">Selamat Datang</h3>
-        <h4 class="text-center">Silahkan Input Data Barang</h4>
+        <ul></ul>
+        <h3 class="text-center">Edit Data Penumpang</h3>
+        <ul></ul>
           
         <!-- Awal Row -->
         <div class="row">
@@ -49,7 +69,7 @@
                 <!-- Awal card --> 
                 <div class="card">
                     <div class="card-header bg-primary text-light">
-                        Form Input Data Barang
+                        Form Edit Data Penumpang
                     </div>
                     <div class="card-body">
                         <!-- Awal form -->

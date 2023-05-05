@@ -40,7 +40,7 @@
           <a class="nav-link active" aria-current="page" href="suspek.php">Data Suspek</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="tes.php">Monitor Penumpang</a>
+          <a class="nav-link active" aria-current="page" href="penumpang.php">Monitor Penumpang</a>
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="logout.php">Logout</a>
@@ -55,8 +55,8 @@
     <div class="container">
         <ul></ul>
         <ul></ul>
-        <h3 class="text-center">Selamat Datang</h3>
-        <h4 class="text-center">Silahkan Input Data</h4>
+        <h3 class="text-center">| Selamat Datang |</h3>
+        <h4 class="text-center">Silahkan Scan Data</h4>
         <ul></ul>
         <ul></ul>
 
@@ -161,7 +161,7 @@
                                 <td><?= $data['nomor'] ?></td>
                                 <td><?= $data['nama_penumpang'] ?></td>
                                 <td>
-                                <a href="edit-data.php?id=<?php echo $data['id_penumpang'] ?>"><button class="btn btn-warning bi bi-pencil-square" name="bedit" type="submit">Edit </button></a>
+                                <a href="edit-data.php?id=<?php echo $data['id_penumpang'] ?>"><button class="btn btn-warning bi bi-pencil-square" name="bedit" type="submit">  Tambah</button></a>
                                 </td>
                             </tr>
                             

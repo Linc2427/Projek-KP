@@ -34,6 +34,7 @@
                     <li><a href="index.php">Home</a></li>
                     <li><a href="blog.php">Data</a></li>
                     <li><a href="contact.php">Contact</a></li>
+                    <li><a href="login.php">Login</a></li>
                 </ul>
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
@@ -67,7 +68,7 @@
             <i class="fab fa-twitter"></i>
             <i class="fab fa-linkedin"></i>
         </div>
-         <p>Copyright © 2022 <a href="#footer">PT Angkasa Pura I</a> All Rights Reserved</p>
+         <p>Copyright © 2023 <a href="#footer">PT Angkasa Pura I</a> All Rights Reserved</p>
     </section>
     <!-- Footer Section End -->
 

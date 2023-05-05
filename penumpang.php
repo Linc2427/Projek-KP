@@ -4,46 +4,75 @@
     if (!$conn) {
         die("<script>alert('Gagal tersambung dengan database.')</script>");
     }
-    date_default_timezone_set('Asia/jakarta');
 ?>
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Refresh Page -->
+    <script>
+    function autoRefresh() {
+        window.location = window.location.href;
+    }
+    setInterval('autoRefresh()', 5000);
+    </script>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<html>
-<head>
-<title>ATNOS</title>
-<!-- <meta http-equiv="refresh" content="5"> -->
-<link rel="stylesheet" href="tabel.css">
-</head>
- <div class="text_box">
-            <p></p>
-            <center><h1>Airport Baggage Check Service</h1></center>
-            <p></p>
-            <center><p id="headtext" >Daftar Penumpang Koper Tidak Lolos X-RAY</p></center>
-<body>
-<div class="filter">
-</div>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
 
-<h2><span id="time"></span></h2>
-<script type="text/javascript">
-function refreshTime() {
-  const timeDisplay = document.getElementById("time");
-  const dateString = new Date().toLocaleString();
-  const formattedString = dateString.replace(", ", " - ");
-  timeDisplay.textContent = formattedString;
-}
-  setInterval(refreshTime, 1000);
-</script>
-<table >
-<tr>
-            <th width="60px">No</th>
-            <th>Nomor Penerbangan</th>
-            <th>Nama</th>
-            <th>Status</th>
-    </tr>
+    <title>Baggage Check</title>
 
-    <div class='barisf'><div class='c1'><img name='img0' src='/display/images/jt-t.gif' width='190' height='45' /></div><div class='c2' id='cstext0'>JT 222</div><div class='c3'>12:25</div><div class='c4' id='0'>BANJARMASIN</div><div class='c5'>13</div><div class='c6'>14:11</div><div class='c7'>Boarding</div></div>
+    <style>
+      body {
+        background-image: url("images/test.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body onload="startTime()">
+    <header>
+      <div class="container mt-5 mb-2">
+        <div class="row">
+          <div class="col">
+            <nav class="navbar navbar-light">
+              <a href="#" class="navbar-brand">
+                <h1>Airport Baggage Check Service</h1>
+              </a>
+              <div class="form-inline">
+                <h4 class="mr-2" id="currentDate"></h4>
+                <h4 class="" id="currentTime"></h4>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
 
-            <tbody>
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <table class="table table-light table-stripped text-center shadow rounded-lg">
+          <thead class="thead-dark">
+            <tr>
+              <th>No.</th>
+              <th>Nomor Penerbangan</th>
+              <th>Nama</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
                          <!-- Menampilkan Data yang ada di Database -->
                          
                             <?php
@@ -61,7 +90,67 @@ function refreshTime() {
             <tr>
             <!---else--->
             </tr>
-            </tbody>
-</table>
-</body>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      var today = new Date(); /* new date object */
+      var month = [
+        "",
+        "Januari",
+        "Februari",
+        "Maret",
+        "April",
+        "Mei",
+        "Juni",
+        "Juli",
+        "Agustus",
+        "September",
+        "Oktober",
+        "November",
+        "Desember",
+      ];
+
+      var date =
+        today.getDate() +
+        " / " +
+        month[today.getMonth() + 1] +
+        " / " +
+        today.getFullYear();
+      /* display current date */
+      document.getElementById("currentDate").innerHTML = date;
+
+      /* Auto refreshing clock time */
+      function startTime() {
+        var today = new Date(); /* new date object */
+        /* getting minutes hours and seconds from date object */
+        var hours = today.getHours();
+        var minutes = today.getMinutes();
+        var seconds = today.getSeconds();
+        /* 12 hour time formate */
+        var amPm = "AM";
+        if (hours > 13) {
+          amPm = "PM";
+        }
+        /* put zero before numbers < 10 */
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+
+        var time = hours + " : " + minutes + " : " + seconds + "  " + amPm;
+        /* display current time */
+        document.getElementById("currentTime").innerHTML = time;
+
+        /* Auto refreshing time every 1 second */
+        setTimeout(function () {
+          startTime();
+        }, 1000);
+      }
+    </script>
+  </body>
 </html>
