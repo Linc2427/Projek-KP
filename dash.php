@@ -73,7 +73,7 @@
                         <!-- Awal form -->
                         <form action="" method="POST" enctype="multipart/form-data">
                             <div class="mb-2">
-                                <label class="form-label">Cari</label>
+                                <label class="form-label">Tambah</label>
                                 <input type="text" name="tcari" value="<?php if(isset($_POST['bcari'])){echo $_POST['bcari'];} ?>" class="form-control" placeholder="Scan Here">
                         <div class="text-center">
                             <hr>
@@ -83,41 +83,42 @@
                         </div>     
                         </form>
                         <!-- Akhir form -->
+
+                        <?php 
                         
-                        <?php
+                        if(isset($_POST['bsimpan'])){
+                          $input=$_POST['tcari'];
+                          $array= explode (' ', $input);
+
+                          $DataArray = array();
+
+                          foreach($array as $item){
+                            $DataArray[]="'$item'";
+                          }
+                          // print_r(implode(',', $DataArray));
+
+                          $sql = "INSERT INTO `tb_penumpang`(`nomor`, `nama_penumpang`) VALUES ";
+                          $sql .= '('.implode(',', $DataArray).')';
+                          echo $sql;
+                          $simpan = mysqli_query($conn, $sql);
+                          if($simpan){
+                            echo "<script>
+                                    alert('Simpan data sukses');
+                                    document.location='dashboard.php';
+                                </script>";
+                          } else {
+                              echo "<script>
+                                      alert('Simpan data Gagal');
+                                      document.location='dashboard.php';
+                                  </script>";
+                          }
+
+                          
+
+                        }
+                        ?>
                         
-                        if(isset($_POST['bsimpan'])) {
-                            $simpan = mysqli_query($conn, " INSERT INTO tb_penumpang (`nama_penumpang`) VALUE('$_POST[tkode]')");     
-                            if($simpan){
-                                echo "<script>
-                                        alert('Simpan data sukses');
-                                        document.location='dashboard.php';
-                                    </script>";
-                            } else {
-                                echo "<script>
-                                        alert('Simpan data Gagal');
-                                        document.location='dashboard.php';
-                                    </script>";
-                                
-                                
-                                }
-                            }
-                    
-                        ?>
-                        <?php
-                              if (isset($_POST['bsimpan'])){
-                                $input=$_POST['tcari'];
-                                $array= explode (' ', $input);
-                                $data=$array();
-                                foreach ($array as $value) {
-                                  $parts = explode(' ', $value);
-                                  $data[] = array(
-                                    'nomor' => $parts[0],
-                                    'nama_penumpang' => $parts[1],
-                                  );
-                                }
-                              }
-                        ?>
+                        
                     </div>
                     <div class="card-footer bg-primary">
                         
