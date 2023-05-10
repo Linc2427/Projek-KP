@@ -7,7 +7,7 @@ error_reporting(0);
 session_start();
 $conn = mysqli_connect("localhost", "root", "", "kpkp") or die ("koneksi gagal");
 if (isset($_SESSION['login'])) {
-    header("Location: dashboard.php");
+    header("Location: dash.php");
 }
 
 if (isset($_POST['submit'])) {

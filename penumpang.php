@@ -7,21 +7,14 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Refresh Page -->
-    <script>
-    function autoRefresh() {
-        window.location = window.location.href;
-    }
-    setInterval('autoRefresh()', 35000);
-    </script>
-    
+  <head>    
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <meta http-equiv="refresh" content="3500">
 
     <!-- Bootstrap CSS -->
     <link
@@ -40,13 +33,16 @@
         background-attachment: fixed;
         background-size: cover;
       }
-      
-      .footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 50px;
+      .blink {
+        animation: blinker 1.5s linear infinite;
+        color: red;
+        font-family: sans-serif;
       }
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
     </style>
   </head>
   <body onload="startTime()">
@@ -70,12 +66,13 @@
 
     <div class="container">
       <div class="row d-flex justify-content-center">
-        <table class="table table-light table-stripped text-center shadow rounded-lg">
+        <table class="table table-light table-stripped table-striped text-center shadow rounded-lg">
           <thead class="thead-dark">
             <tr>
               <th>No.</th>
               <th>Nomor Penerbangan</th>
               <th>Nama</th>
+              <th>Tanggal</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -89,10 +86,11 @@
                                     while($data = mysqli_fetch_array($tampil)) {
                             ?>
                             <tr>
-                                <td><?= $no++ ?></td>
+                                <td><?= $no++ ?></td> 
                                 <td><?= $data['nomor_penerbangan'] ?></td>
                                 <td><?= $data['nama_penumpang'] ?></td>
-                                <td><?= $data['status'] ?></td>
+                                <td><?= toDate_ID($data['tanggal_simpan']) ?></td>
+                                <td class="blink"><?= $data['status'] ?></td>
                                 <?php } ?>
             <tr>
             <!---else--->
@@ -100,7 +98,51 @@
           </tbody>
         </table>
       </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col">
+          <div class="alert alert-warning text-center" role="alert">
+            Bagi Nama yang Tertera Segera Hubungi Posko AVSEC
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- //tak kek i ae ta okh -->
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col d-flex align-items-center">
+          <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+          </a>
+          <!-- <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span> -->
+          <marquee onmouseout='this.start()' onmouseover='this.stop()' scrollamount='10'><img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSELAMAT DATANG DI TERMINAL 1 BANDAR UDARA INTERNASIONAL JUANDA SURABAYA&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspJANGAN MENINGGALKAN BARANG BAWAAN ANDA TANPA PENGAWASAN&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspDO NOT LEAVE YOUR LUGGAGE UNATTENDED&nbsp&nbsp<img src="ap1logo.png"width="60" height="30"/>&nbsp&nbspSILENT AIRPORT SUDAH DIBERLAKUKAN, MOHON PARA PENUMPANG SELALU MEMPERHATIKAN INFORMASI PENERBANGAN PADA MONITOR FIDS YANG TERSEDIA. TERIMAKASIH.&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSILENT AIRPORT POLICY HAS BEEN ENFORCED, PASSANGERS ARE ADVISED TO CHECK FLIGHT INFORMATION ON AVAILABLE FIDS SCREEN. THANK YOU.&nbsp&nbsp</marquee>
+        </div>
+      </footer>
+    </div>
+
+    <?php
+    function toDate_ID($tanggal)
+    {
+        $date = new DateTime($tanggal);
+        $date_now = $date->format('d-m-Y');
+        $hour_now = $date->format('H:i:s');
+        $month = array (1 =>   'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+        );
+        $var = explode('-',$date_now);
+        return $var[0] . ' ' . $month[ (int)$var[1] ] . ' ' . $var[2] . ' ' . $hour_now;
+    }
+    ?>
+
     <script>
       var today = new Date(); /* new date object */
       var month = [
@@ -159,6 +201,4 @@
       }
     </script>
   </body>
-  <div class="footer">
-  <marquee onmouseout='this.start()' onmouseover='this.stop()' scrollamount='10'><img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSELAMAT DATANG DI TERMINAL 1 BANDAR UDARA INTERNASIONAL JUANDA SURABAYA&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspJANGAN MENINGGALKAN BARANG BAWAAN ANDA TANPA PENGAWASAN&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspDO NOT LEAVE YOUR LUGGAGE UNATTENDED&nbsp&nbsp<img src="ap1logo.png"width="60" height="30"/>&nbsp&nbspSILENT AIRPORT SUDAH DIBERLAKUKAN, MOHON PARA PENUMPANG SELALU MEMPERHATIKAN INFORMASI PENERBANGAN PADA MONITOR FIDS YANG TERSEDIA. TERIMAKASIH.&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSILENT AIRPORT POLICY HAS BEEN ENFORCED, PASSANGERS ARE ADVISED TO CHECK FLIGHT INFORMATION ON AVAILABLE FIDS SCREEN. THANK YOU.&nbsp&nbsp</marquee>
 </html>

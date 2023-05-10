@@ -110,12 +110,12 @@
                                 </select>
                             </div>    
                             </div>
-                            <div class="col">
+                            <!-- <div class="col">
                                 <div class="mb-2">
                                 <label class="form-label">Tanggal</label>
                                 <input type="date" name="tTanggal" class="form-control" placeholder="Masukkan Jumlah Barang" value="<?php echo date('d:m:y') ?>" required>
                                 </div>
-                            </div>   
+                            </div>    -->
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select class="form-select" name="tstatus" required>
@@ -145,17 +145,7 @@
 						$jumlah 	        = $_POST['tjumlah'];
                         $status 	        = $_POST['tstatus'];
                         $satuan 	 	    = $_POST['tsatuan'];
-						$tanggal 	 	    = $_POST['tTanggal'];
-                        $update ="UPDATE `tb_suspek` SET 
-												`nomor_penerbangan` = '$nomor_penerbangan',
-												`nama_penumpang` = '$nama_penumpang',
-												`nama_barang` = '$nama_barang',
-                                                `kategori_barang` = '$kategori_barang',
-												`jumlah` = '$jumlah',
-                                                `status` = '$status',
-                                                `satuan` = '$satuan',
-												`tanggal` = '$tanggal'
-												WHERE `id_suspek` = $id";
+                        $update ="UPDATE `tb_suspek` SET `nomor_penerbangan`='$nomor_penerbangan',`nama_penumpang`='$nama_penumpang',`nama_barang`='$nama_barang',`kategori_barang`='$kategori_barang',`jumlah`='$jumlah',`satuan`='$satuan',`status`='$status' WHERE `id_suspek`='$id'";
                         $query = mysqli_query($conn,$update);
 						if($query){
 							echo '<script>alert("Ubah data berhasil")</script>';
@@ -164,15 +154,10 @@
 							echo 'gagal '.mysqli_error($conn);
 						}
                     }
-                    
-						
-                        ?>
-                        
-                    </div>
-                    <div class="card-footer bg-primary">
-                        
+                        ?>   
                     </div>
                 </div>
+
                 <!-- Akhir card -->
             </div>  
             <!-- Akhir col -->

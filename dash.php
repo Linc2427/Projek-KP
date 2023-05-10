@@ -22,28 +22,29 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   </head>
     
-  <body>
-    <!-- Nav Bar Start -->
-      
-    <nav class="navbar navbar-expand-lg" style="background-color: #ffc61d;">
+  <body  style="background-color:#AFFF">
+    <!-- Nav Bar Start -->      
+    <nav class="navbar navbar-expand-lg bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Golek.in</a>
+  <a class="navbar-brand" href="#">
+      <img src="images/ap.png" alt="Bootstrap" width="200" height="50">
+    </a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto ms-auto">
+      <ul class="navbar-nav ml-auto ms-auto mr-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="dashboard.php">Home</a>
+          <a class="nav-link active text-white" aria-current="page" href="dash.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="suspek.php">Data Suspek</a>
+          <a class="nav-link active text-white" aria-current="page" href="suspek.php">Data Suspek</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="penumpang.php">Monitor Penumpang</a>
+          <a class="nav-link active text-white" aria-current="page" href="penumpang.php">Monitor Penumpang</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="logout.php">Logout</a>
+          <a class="nav-link active text-white" aria-current="page" href="logout.php">Logout</a>
         </li>
       </ul>
     </div>
@@ -53,20 +54,15 @@
 
       <!-- Awal Kontainer -->
     <div class="container">
-        <ul></ul>
-        <ul></ul>
-        <h3 class="text-center">| Selamat Datang |</h3>
-        <h4 class="text-center">Silahkan Scan Data</h4>
-        <ul></ul>
-        <ul></ul>
-
+      <br>
+        <!-- <h3 class="text-center">Scan Barcode</h3> -->
         <!-- Awal Row -->
         <div class="row">
             <!-- Awal col --> 
             <div class="col-md-8 mx-auto">
                 <!-- Awal card --> 
                 <div class="card">
-                    <div class="card-header bg-primary text-light">
+                    <div class="card-header bg-light-primary text-light"  style="background-color: #23b5d3;">
                         Form Scan
                     </div>
                     <div class="card-body">
@@ -77,7 +73,7 @@
                                 <input type="text" name="tcari" value="<?php if(isset($_POST['bcari'])){echo $_POST['bcari'];} ?>" class="form-control" placeholder="Scan Here">
                         <div class="text-center">
                             <hr>
-                            <button class="btn btn-primary bi bi-plus" name="bsimpan" type="submit"> Tambah</button>
+                            <button class="btn btn-success bi bi-plus" name="bsimpan" type="submit"> Tambah</button>
                             <button class="btn btn-primary bi bi-search" name="bcari" type="submit"> Cari</button>
                             <button class="btn btn-danger bi bi-bootstrap-reboot" name="breset" type="Batalkan"> Reset</button>
                         </div>     
@@ -95,21 +91,19 @@
                           foreach($array as $item){
                             $DataArray[]="'$item'";
                           }
-                          // print_r(implode(',', $DataArray));
 
-                          $sql = "INSERT INTO `tb_penumpang`(`nomor`, `nama_penumpang`) VALUES ";
+                          $sql = "INSERT INTO `tb_suspek`(`nomor_penerbangan`, `nama_penumpang`) VALUES ";
                           $sql .= '('.implode(',', $DataArray).')';
-                          echo $sql;
                           $simpan = mysqli_query($conn, $sql);
                           if($simpan){
                             echo "<script>
                                     alert('Simpan data sukses');
-                                    document.location='dashboard.php';
+                                    document.location='dash.php';
                                 </script>";
                           } else {
                               echo "<script>
                                       alert('Simpan data Gagal');
-                                      document.location='dashboard.php';
+                                      document.location='dash.php';
                                   </script>";
                           }
 
@@ -120,9 +114,6 @@
                         
                         
                     </div>
-                    <div class="card-footer bg-primary">
-                        
-                    </div>
                 </div>
                 <!-- Akhir card -->
             </div>  
@@ -131,28 +122,23 @@
         <!-- Akhir Row -->
         
         <!-- Awal card --> 
-                <div class="card mt-3">
-                    <div class="card-header bg-primary text-light">
+                <div class="card mt-3 ml-auto mr-auto" style="width:100%">
+                    <div class="card-header text-light" style="background-color: #23b5d3; width:100%;">
                         Data Penumpang
                     </div>
-                    <div class="card-body">
-                        <div class="col-md-8 mx-auto">
-                            <form method="post">
-                            </form>
-                        </div>
-
+                    <div class="card-body" style="width:100%">
                         <!-- Tabel -->
                         <div class="table-responsive">
-                        <table class="table table-striped table-hover">
+                        <table class="table table-striped table-hover table-bordered" >
                             <tr>
                                 <th>No</th>
                                 <th>Nomor Penerbangan</th>
                                 <th>Nama Penumpang</th>
-                                <!-- <th class="text-center">Nama Barang</th>
-                                <th class="text-center">Kategori Barang</th>
+                                <!-- <th class="text-center">Nama Barang</th> -->
+                                <!-- <th class="text-center">Kategori Barang</th>
                                 <th class="text-center">Jumlah</th> -->
-                                <!-- <th class="text-center">Tanggal</th> -->
-                                <th>Aksi</th>
+                                <th>Tanggal Ditambahkan</th>
+                                <!-- <th>Aksi</th> -->
                         </tr>
                             <!-- Menampilkan Data yang ada di Database -->
                             <?php
@@ -175,17 +161,15 @@
                                 <td><?= $no++ ?></td>
                                 <td><?= $data['nomor'] ?></td>
                                 <td><?= $data['nama_penumpang'] ?></td>
-                                <td>
+                                <td><?= $data['tanggal_ditambahkan'] ?></td>
+                                <!-- <td>
                                 <a href="edit-data.php?id=<?php echo $data['id_penumpang'] ?>"><button class="btn btn-warning bi bi-pencil-square" name="bedit" type="submit">Edit </button></a>
-                                </td>
+                                </td> -->
                             </tr>
                             
                             <?php } ?>
                             
                         </table>
-                    </div>
-                    <div class="card-footer bg-primary">
-                        
                     </div>
                 </div>
                 <!-- Akhir card -->
