@@ -163,9 +163,9 @@
 
       var date =
         today.getDate() +
-        " / " +
+        "  " +
         month[today.getMonth() + 1] +
-        " / " +
+        "  " +
         today.getFullYear();
       /* display current date */
       document.getElementById("currentDate").innerHTML = date;
