@@ -100,7 +100,7 @@
       </div>
       <div class="row d-flex justify-content-center">
         <div class="col">
-          <div class="alert alert-warning text-center" role="alert">
+          <div class="alert alert-info text-center" role="alert">
             Bagi Nama yang Tertera Segera Hubungi Posko AVSEC
           </div>
         </div>
