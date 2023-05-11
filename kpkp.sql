@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2023 at 02:29 PM
+-- Generation Time: May 10, 2023 at 03:50 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -78,17 +78,16 @@ INSERT INTO `tb_kategori` (`id_kategori`, `kategori_barang`) VALUES
 CREATE TABLE `tb_penumpang` (
   `id_penumpang` int(255) NOT NULL,
   `nomor` varchar(255) NOT NULL,
-  `nama_penumpang` varchar(255) NOT NULL
+  `nama_penumpang` varchar(255) NOT NULL,
+  `tanggal_ditambahkan` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_penumpang`
 --
 
-INSERT INTO `tb_penumpang` (`id_penumpang`, `nomor`, `nama_penumpang`) VALUES
-(5, 'JT 706', 'Cinta Uya'),
-(6, 'QZ 641', 'Arsila Tania Viranka'),
-(7, 'IW 1804', 'Dapit Santonio Putro');
+INSERT INTO `tb_penumpang` (`id_penumpang`, `nomor`, `nama_penumpang`, `tanggal_ditambahkan`) VALUES
+(18, 'JT-5020', 'Bambang', '2023-05-10 08:02:56');
 
 -- --------------------------------------------------------
 
@@ -123,18 +122,20 @@ CREATE TABLE `tb_suspek` (
   `kategori_barang` varchar(100) NOT NULL,
   `jumlah` varchar(11) NOT NULL,
   `satuan` varchar(100) NOT NULL,
-  `tanggal` date NOT NULL DEFAULT current_timestamp(),
   `tanggal_simpan` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` varchar(100) NOT NULL
+  `status` varchar(100) NOT NULL DEFAULT 'Aktif'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_suspek`
 --
 
-INSERT INTO `tb_suspek` (`id_suspek`, `nomor_penerbangan`, `nama_penumpang`, `nama_barang`, `kategori_barang`, `jumlah`, `satuan`, `tanggal`, `tanggal_simpan`, `status`) VALUES
-(3, 'IW 1804', 'Dapit Santonio Putro', 'Gunting', 'Benda Tajam', '3', 'Unit', '2023-05-03', '2023-05-05 02:58:58', 'Aktif'),
-(24, 'QZ 641', 'Arsila Tania Viranka', 'Baygon', 'Zat Beracun', '1', 'Pcs', '2023-05-04', '2023-05-05 02:58:32', 'Aktif');
+INSERT INTO `tb_suspek` (`id_suspek`, `nomor_penerbangan`, `nama_penumpang`, `nama_barang`, `kategori_barang`, `jumlah`, `satuan`, `tanggal_simpan`, `status`) VALUES
+(3, 'IW 1804', 'Dapit Santonio Putro', 'Gunting', 'Benda Tajam', '3', 'Unit', '2023-05-05 02:58:58', 'Aktif'),
+(24, 'QZ 641', 'Arsila Tania Viranka', 'Baygon', 'Zat Beracun', '1', 'Pcs', '2023-05-05 02:58:32', 'Aktif'),
+(32, 'IW 1804', 'Ahmad Jarjit', 'Sianida', 'Zat Beracun', '1', 'Unit', '2023-05-05 13:20:25', 'Aktif'),
+(34, '7789', 'miqdad', 'ok', 'Agen Etiologis', '9', 'Unit', '2023-05-10 08:32:19', 'Tidak Aktif'),
+(37, 'JT-5020', 'Bambang', 'Bom', 'Zat Beracun', '1', 'Unit', '2023-05-10 01:05:17', 'Aktif');
 
 --
 -- Indexes for dumped tables
@@ -190,7 +191,7 @@ ALTER TABLE `tb_kategori`
 -- AUTO_INCREMENT for table `tb_penumpang`
 --
 ALTER TABLE `tb_penumpang`
-  MODIFY `id_penumpang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_penumpang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tb_status`
@@ -202,7 +203,7 @@ ALTER TABLE `tb_status`
 -- AUTO_INCREMENT for table `tb_suspek`
 --
 ALTER TABLE `tb_suspek`
-  MODIFY `id_suspek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_suspek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
