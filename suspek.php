@@ -74,6 +74,7 @@
                         Data Penumpang
                     </div>
                     <div class="card-body">
+                    <a href="export.php"><button class="btn btn-warning mb-2" type="submit" name="export">Export</button></a>
                         <div class="col-md-8 mx-auto">
                             <form method="post">
                             </form>

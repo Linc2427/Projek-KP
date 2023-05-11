@@ -14,6 +14,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <!-- Refresh Page -->
     <meta http-equiv="refresh" content="3500">
 
     <!-- Bootstrap CSS -->
@@ -93,7 +94,6 @@
                                 <td class="blink"><?= $data['status'] ?></td>
                                 <?php } ?>
             <tr>
-            <!---else--->
             </tr>
           </tbody>
         </table>

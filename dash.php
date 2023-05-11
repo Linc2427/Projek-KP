@@ -20,9 +20,9 @@
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-  </head>
-    
+  </head>  
   <body  style="background-color:#AFFF">
+
     <!-- Nav Bar Start -->      
     <nav class="navbar navbar-expand-lg bg-dark">
   <div class="container-fluid">
@@ -74,7 +74,7 @@
                         <div class="text-center">
                             <hr>
                             <button class="btn btn-success bi bi-plus" name="bsimpan" type="submit"> Tambah</button>
-                            <button class="btn btn-primary bi bi-search" name="bcari" type="submit"> Cari</button>
+                            <!-- <button class="btn btn-primary bi bi-search" name="bcari" type="submit"> Cari</button> -->
                             <button class="btn btn-danger bi bi-bootstrap-reboot" name="breset" type="Batalkan"> Reset</button>
                         </div>     
                         </form>
