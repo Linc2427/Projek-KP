@@ -7,7 +7,7 @@
     // Menanpilkan data dari tabel tb_suspek
         $barang = mysqli_query($conn, "SELECT * FROM tb_suspek WHERE id_suspek = '".$_GET['id']."' ");
         if(mysqli_num_rows($barang) == 0){
-            echo '<script>window.location="dashboard.php"</script>';
+            echo '<script>window.location="dash.php"</script>';
         }
         $b = mysqli_fetch_assoc($barang);
 ?>
@@ -23,23 +23,26 @@
     
   <body>
 
-  <!-- Nav Bar Start -->    
-  <nav class="navbar navbar-expand-lg" style="background-color: #ffc61d;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Golek.in</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto ms-auto">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="dashboard.php">Kembali</a>
-            </li>
-            </ul>
-        </div>
-        </div>
-    </nav>
+ <!-- Nav Bar Start -->      
+ <nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+  <a class="navbar-brand" href="#">
+      <img src="images/ap.png" alt="Bootstrap" width="200" height="50">
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto ms-auto mr-auto">
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="suspek.php">Kembali</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <!-- Nav Bar END -->
+
 <ul></ul>
       <!-- Awal Kontainer -->
     <div class="container">

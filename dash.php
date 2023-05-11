@@ -59,7 +59,7 @@
         <!-- Awal Row -->
         <div class="row">
             <!-- Awal col --> 
-            <div class="col-md-8 mx-auto">
+            <div class="col-md-12 mx-auto">
                 <!-- Awal card --> 
                 <div class="card">
                     <div class="card-header bg-light-primary text-light"  style="background-color: #23b5d3;">
@@ -120,67 +120,19 @@
             <!-- Akhir col -->
         </div>
         <!-- Akhir Row -->
-        
-        <!-- Awal card --> 
-                <div class="card mt-3 ml-auto mr-auto" style="width:100%">
-                    <div class="card-header text-light" style="background-color: #23b5d3; width:100%;">
-                        Data Penumpang
-                    </div>
-                    <div class="card-body" style="width:100%">
-                        <!-- Tabel -->
-                        <div class="table-responsive">
-                        <table class="table table-striped table-hover table-bordered" >
-                            <tr>
-                                <th>No</th>
-                                <th>Nomor Penerbangan</th>
-                                <th>Nama Penumpang</th>
-                                <!-- <th class="text-center">Nama Barang</th> -->
-                                <!-- <th class="text-center">Kategori Barang</th>
-                                <th class="text-center">Jumlah</th> -->
-                                <th>Tanggal Ditambahkan</th>
-                                <!-- <th>Aksi</th> -->
-                        </tr>
-                            <!-- Menampilkan Data yang ada di Database -->
-                            <?php
-                            $no = 1;
-                            if(isset($_POST['bcari'])){
-                                $keyword = $_POST['tcari'];
-                                $q= "SELECT * FROM tb_penumpang WHERE CONCAT('',nama_penumpang, nomor) like '%$keyword%' order BY id_penumpang DESC;";
-                            }
-                            else{
-                                $q = "SELECT * FROM tb_penumpang order by id_penumpang DESC";
-                                
-                            }
-
-                            $tampil = mysqli_query($conn, $q);
-                            while($data = mysqli_fetch_array($tampil)) {
-                                
-                            ?>
-                            
-                            <tr>
-                                <td><?= $no++ ?></td>
-                                <td><?= $data['nomor'] ?></td>
-                                <td><?= $data['nama_penumpang'] ?></td>
-                                <td><?= $data['tanggal_ditambahkan'] ?></td>
-                                <!-- <td>
-                                <a href="edit-data.php?id=<?php echo $data['id_penumpang'] ?>"><button class="btn btn-warning bi bi-pencil-square" name="bedit" type="submit">Edit </button></a>
-                                </td> -->
-                            </tr>
-                            
-                            <?php } ?>
-                            
-                        </table>
-                    </div>
-                </div>
-                <!-- Akhir card -->
-        
-          
+             
      </div> 
     <!-- Akhir Kontainer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
   </body>
-  <div class="footer">
-    <marquee onmouseout='this.start()' onmouseover='this.stop()' scrollamount='9'><img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSELAMAT DATANG DI TERMINAL 1 BANDAR UDARA INTERNASIONAL JUANDA SURABAYA&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspJANGAN MENINGGALKAN BARANG BAWAAN ANDA TANPA PENGAWASAN&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspDO NOT LEAVE YOUR LUGGAGE UNATTENDED&nbsp&nbsp<img src="ap1logo.png"width="60" height="30"/>&nbsp&nbspSILENT AIRPORT SUDAH DIBERLAKUKAN, MOHON PARA PENUMPANG SELALU MEMPERHATIKAN INFORMASI PENERBANGAN PADA MONITOR FIDS YANG TERSEDIA. TERIMAKASIH.&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSILENT AIRPORT POLICY HAS BEEN ENFORCED, PASSANGERS ARE ADVISED TO CHECK FLIGHT INFORMATION ON AVAILABLE FIDS SCREEN. THANK YOU.&nbsp&nbsp</marquee>
-
-</div>
+  <ul></ul>
+  <!-- Footer -->
+  <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top fixed-bottom">
+        <div class="col d-flex align-items-center">
+          <marquee onmouseout='this.start()' onmouseover='this.stop()' scrollamount='10'><img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSELAMAT DATANG DI TERMINAL 1 BANDAR UDARA INTERNASIONAL JUANDA SURABAYA&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspJANGAN MENINGGALKAN BARANG BAWAAN ANDA TANPA PENGAWASAN&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspDO NOT LEAVE YOUR LUGGAGE UNATTENDED&nbsp&nbsp<img src="ap1logo.png"width="60" height="30"/>&nbsp&nbspSILENT AIRPORT SUDAH DIBERLAKUKAN, MOHON PARA PENUMPANG SELALU MEMPERHATIKAN INFORMASI PENERBANGAN PADA MONITOR FIDS YANG TERSEDIA. TERIMAKASIH.&nbsp&nbsp<img src="ap1logo.png" width="60" height="30"/>&nbsp&nbspSILENT AIRPORT POLICY HAS BEEN ENFORCED, PASSANGERS ARE ADVISED TO CHECK FLIGHT INFORMATION ON AVAILABLE FIDS SCREEN. THANK YOU.&nbsp&nbsp</marquee>
+        </div>
+      </footer>
+    </div>
+    <!-- End Footer -->
 </html>
