@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2023 at 03:50 PM
+-- Generation Time: May 11, 2023 at 04:34 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -132,10 +132,11 @@ CREATE TABLE `tb_suspek` (
 
 INSERT INTO `tb_suspek` (`id_suspek`, `nomor_penerbangan`, `nama_penumpang`, `nama_barang`, `kategori_barang`, `jumlah`, `satuan`, `tanggal_simpan`, `status`) VALUES
 (3, 'IW 1804', 'Dapit Santonio Putro', 'Gunting', 'Benda Tajam', '3', 'Unit', '2023-05-05 02:58:58', 'Aktif'),
-(24, 'QZ 641', 'Arsila Tania Viranka', 'Baygon', 'Zat Beracun', '1', 'Pcs', '2023-05-05 02:58:32', 'Aktif'),
-(32, 'IW 1804', 'Ahmad Jarjit', 'Sianida', 'Zat Beracun', '1', 'Unit', '2023-05-05 13:20:25', 'Aktif'),
-(34, '7789', 'miqdad', 'ok', 'Agen Etiologis', '9', 'Unit', '2023-05-10 08:32:19', 'Tidak Aktif'),
-(37, 'JT-5020', 'Bambang', 'Bom', 'Zat Beracun', '1', 'Unit', '2023-05-10 01:05:17', 'Aktif');
+(24, 'QZ 641', 'Arsila Tania Viranka', 'Baygon', 'Zat Beracun', '1', 'Pcs', '2023-05-10 02:58:32', 'Aktif'),
+(32, 'IW 1804', 'Ahmad Jarjit', 'Sianida', 'Zat Beracun', '1', 'Unit', '2023-05-08 13:20:25', 'Aktif'),
+(34, '7789', 'miqdad', 'ok', 'Agen Etiologis', '9', 'Unit', '2023-05-12 08:32:19', 'Tidak Aktif'),
+(37, 'JT-5020', 'Bambang', 'Bom', 'Zat Beracun', '1', 'Unit', '2023-05-14 01:05:17', 'Aktif'),
+(50, 'JT-123', 'bayu', 'kurang tahu', 'Gas Padat', '9', 'Pcs', '2023-05-11 13:48:19', 'Aktif');
 
 --
 -- Indexes for dumped tables
@@ -203,7 +204,7 @@ ALTER TABLE `tb_status`
 -- AUTO_INCREMENT for table `tb_suspek`
 --
 ALTER TABLE `tb_suspek`
-  MODIFY `id_suspek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_suspek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
