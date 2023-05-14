@@ -11,7 +11,7 @@ if ($_SESSION['login'] != true) {
 }
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
