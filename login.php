@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
                 <div class="col-md-6 right">
                     <form action="" method="post" enctype="multipart/form">
                         <div class="gambarap">
-                            <img src="ap.png" alt="Logo Angkasa Pura">
+                            <img src="images/ap.png" alt="Logo Angkasa Pura">
                         </div>
                         <div class="input-box">
                             <header>Login</header>
