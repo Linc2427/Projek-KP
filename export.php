@@ -65,8 +65,7 @@ if ($_SESSION['login'] != true) {
             <input type="date" name="tanggal_akhir" class="form-control" required>
             <button class="btn btn-primary mt-3" type="submit" name="cari">Cari</button>
             <?php if (isset($_POST['cari'])) : ?>
-              <a class="btn btn-success mt-3" target="_blank" href="export_excel.php?tanggal_awal=<?= $_POST['tanggal_awal']; ?>&tanggal_akhir=<?= $_POST['tanggal_akhir']; ?>">
-                Export
+              <a class="btn btn-success mt-3" target="_blank" href="export_excel.php?tanggal_awal=<?= $_POST['tanggal_awal']; ?>&tanggal_akhir=<?= $_POST['tanggal_akhir']; ?>&include_time=false">Export</a>
               </a>
             <?php endif; ?>
           </div>
@@ -114,7 +113,7 @@ if ($_SESSION['login'] != true) {
   </div>
   <!-- End Container -->
   <?php
-  function toDate_ID($tanggal)
+  function toDate_ID($tanggal, $includeTime = true)
   {
     $date = new DateTime($tanggal);
     $date_now = $date->format('d-m-Y');
@@ -134,7 +133,13 @@ if ($_SESSION['login'] != true) {
       'Desember'
     );
     $var = explode('-', $date_now);
-    return $var[0] . ' ' . $month[(int)$var[1]] . ' ' . $var[2] . ' ' . $hour_now;
+    $formattedDate = $var[0] . ' ' . $month[(int)$var[1]] . ' ' . $var[2];
+
+    if ($includeTime) {
+      return $formattedDate . ' ' . $hour_now;
+    } else {
+      return $formattedDate;
+    }
   }
   ?>
 
