@@ -4,8 +4,6 @@ include 'db.php';
 if (!$conn) {
   die("<script>alert('Gagal tersambung dengan database.')</script>");
 }
-// header("Content-type: application/vnd-ms-excel");
-// header("Content-Disposition: attachment; filename=Data Pegawai-$tangwal-$tangkir.xls");
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,16 +38,17 @@ if (!$conn) {
       border-radius: 2px;
     }
   </style>
-
   <?php
-  $tangwaltok = toDate_ID($_GET['tanggal_awal']);
-  $tangkirtok = toDate_ID($_GET['tanggal_akhir']);
+  $includeTime = $_GET['include_time'] ?? true;
+  $tangwaltok = toDate_ID($_GET['tanggal_awal'], false);
+  $tangkirtok = toDate_ID($_GET['tanggal_akhir'], false);
 
   $name_for_project = $tangwaltok . ' - ' . $tangkirtok;
-  $file = $name_for_project . ".xls";
+  $exportTitle = 'Data_' . $tangwaltok . '_' . $tangkirtok . '.xls';
+  $filename = $name_for_project . ".xls";
+
   header("Content-type: application/vnd-ms-excel");
-  // header("Content-Disposition: attachment; filename=Data Pegawai-$tangwaltok-$tangkirtok.xls");
-  header('Content-disposition: attachment; filename=Laporan Data Suspek Tanggal ' . basename($file));
+  header('Content-disposition: attachment; filename=Laporan Data Suspek ' . $filename);
   ?>
   <center>
     <h4>Laporan Datasuspek<br>
@@ -71,7 +70,7 @@ if (!$conn) {
     $no = 1;
     $tangwal = $_GET['tanggal_awal'] . " 00:00:00";
     $tangkir = $_GET['tanggal_akhir'] . " 23:59:59";
-    $tampil = mysqli_query($conn, "SELECT * FROM `tb_suspek` WHERE tanggal_simpan BETWEEN '$tangwal' AND  '$tangkir' ");
+    $tampil = mysqli_query($conn, "SELECT * FROM `tb_suspek` WHERE tanggal_simpan BETWEEN '$tangwal' AND  '$tangkir' ORDER BY tanggal_simpan ASC");
     while ($data = mysqli_fetch_array($tampil)) {
     ?>
       <tr>
@@ -81,15 +80,12 @@ if (!$conn) {
         <td><?= $data['nama_barang'] ?></td>
         <td><?= $data['kategori_barang'] ?></td>
         <td><?= $data['jumlah'] ?>
-          <!-- <td><?= $data['tanggal_simpan'] ?></td> -->
-        <td><?= toDate_ID($data['tanggal_simpan']) ?></td>
+        <td><?= toDate_ID($data['tanggal_simpan'], $includeTime) ?></td>
       <?php } ?>
       </tr>
-
   </table>
-
   <?php
-  function toDate_ID($tanggal)
+  function toDate_ID($tanggal, $includeTime = false)
   {
     $date = new DateTime($tanggal);
     $date_now = $date->format('d-m-Y');
@@ -109,67 +105,15 @@ if (!$conn) {
       'Desember'
     );
     $var = explode('-', $date_now);
-    return $var[0] . ' ' . $month[(int)$var[1]] . ' ' . $var[2] . ' ' . $hour_now;
+    $formattedDate = $var[0] . ' ' . $month[(int)$var[1]] . ' ' . $var[2];
+
+    if ($includeTime) {
+      $formattedDate .= ' ' . $hour_now;
+    }
+
+    return $formattedDate;
   }
   ?>
-
-  <script>
-    var today = new Date(); /* new date object */
-    var month = [
-      "",
-      "Januari",
-      "Februari",
-      "Maret",
-      "April",
-      "Mei",
-      "Juni",
-      "Juli",
-      "Agustus",
-      "September",
-      "Oktober",
-      "November",
-      "Desember",
-    ];
-
-    var date =
-      today.getDate() +
-      "  " +
-      month[today.getMonth() + 1] +
-      "  " +
-      today.getFullYear();
-    /* display current date */
-    document.getElementById("currentDate").innerHTML = date;
-
-    /* Auto refreshing clock time */
-    function startTime() {
-      var today = new Date(); /* new date object */
-      /* getting minutes hours and seconds from date object */
-      var hours = today.getHours();
-      var minutes = today.getMinutes();
-      var seconds = today.getSeconds();
-      /* 12 hour time formate */
-      var amPm = "AM";
-      if (hours > 13) {
-        amPm = "PM";
-      }
-      /* put zero before numbers < 10 */
-      if (minutes < 10) {
-        minutes = "0" + minutes;
-      }
-      if (seconds < 10) {
-        seconds = "0" + seconds;
-      }
-
-      var time = hours + " : " + minutes + " : " + seconds + "  " + amPm;
-      /* display current time */
-      document.getElementById("currentTime").innerHTML = time;
-
-      /* Auto refreshing time every 1 second */
-      setTimeout(function() {
-        startTime();
-      }, 1000);
-    }
-  </script>
 
 </body>
 
