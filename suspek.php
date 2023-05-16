@@ -11,7 +11,7 @@ if ($_SESSION['login'] != true) {
 }
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -82,7 +82,7 @@ if ($_SESSION['login'] != true) {
       </div>
 
       <!-- Tabel -->
-      <div class="table-responsive">
+      <div class="table-responsive table-bordered">
         <table class="table table-striped table-hover">
           <tr>
             <th class="text-center">No</th>
