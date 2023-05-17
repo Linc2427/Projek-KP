@@ -118,7 +118,6 @@ if ($_SESSION['login'] != true) {
               <td class="text-center"><?= $data['kategori_barang'] ?></td>
               <td class="text-center"><?= $data['jumlah'] ?> <?= $data['satuan'] ?></td>
               <td class="text-center"><?= $data['status'] ?></td>
-              <!-- <td class="text-center"><?= $data['tanggal_simpan'] ?></td> -->
               <td><?= toDate_ID($data['tanggal_simpan']) ?></td>
 
               <td class="text-center">
