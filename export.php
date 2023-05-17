@@ -105,7 +105,6 @@ if ($_SESSION['login'] != true) {
           <td><?= $data['kategori_barang'] ?></td>
           <td><?= $data['jumlah'] ?>
           <td><?= toDate_ID($data['tanggal_simpan']) ?></td>
-
         <?php } ?>
         </tr>
     </table>
