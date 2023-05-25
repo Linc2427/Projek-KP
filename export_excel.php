@@ -84,6 +84,26 @@ if (!$conn) {
       <?php } ?>
       </tr>
   </table>
+<br>
+<br>
+<center>
+  <table>
+  <tr>
+  <th></th>
+    <th class="text-center">Mengetahui</th>
+    </tr>
+    </table>
+    </center>
+<br>
+<br>
+<br>
+<table>
+  <tr>
+    <td></td>
+      <td>_____________________</td>
+    </tr>
+    </table>
+
   <?php
   function toDate_ID($tanggal, $includeTime = false)
   {
